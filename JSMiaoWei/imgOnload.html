@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>imgOnload</title>
+<script>
+window.onload=function(){
+	var oImg=new Image();
+
+	oImg.src="../images/imgWall/2.jpg";
+	oImg.onload=function(){
+		alert("预加载完成");
+	};
+};
+</script>
+</head>
+<body>
+	<img src="../images/imgWall/1.jpg" onmouseover="this.src='../images/imgWall/2.jpg'" onmouseout="this.src='../images/imgWall/1.jpg'">
+</body>
+</html>

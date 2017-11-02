@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#Div{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #ccc;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var getText=document.getElementById("Text");
+			var getBtn=document.getElementById("Btn");
+			var getDiv=document.getElementById("Div");
+			getBtn.onclick=function(){
+				getDiv.innerHTML=getText.value;
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="Text">
+	<input type="button" value="设置文字" id="Btn">
+	<div id="Div"></div>
+</body>
+</html>

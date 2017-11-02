@@ -1,0 +1,10 @@
+@charset "utf-8";
+*{ padding:0;margin:0; }
+li{ list-style: none; }
+a{ text-decoration: none; }
+
+.imgWrap{ width:470px;height: 150px; margin:0 auto; margin-top: 200px; position:relative; overflow: hidden;}
+.imgWrap ul{ position:absolute;top:0; }
+.imgWrap .num{ position:absolute; top:125px;right:10px; height:21px;border-bottom: 1px rgba(0,0,0,0);}
+.imgWrap .num div{margin-top: 2px; float: left; width:17px;height: 17px;background-color: #fcf2cf;color:#df4b01;border: 1px solid #f47500;margin-right: 5px;text-align: center;line-height: 17px;font-size: 14px;cursor:pointer;}
+.imgWrap .num .active{ width:19px;height: 19px; margin-top: 0; border:1px solid black; color:black;}

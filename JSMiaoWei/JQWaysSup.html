@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JQWaysSuP</title>
+<style>
+	#div1{ width: 100px;height: 100px;background-color: orange;/*display: none;*/ }
+</style>
+<script src="../JQuery/jquery-1.12.2.js"></script>
+<script>
+$(function(){
+	// alert(document.getElementById("div1").innerHTML);
+	// alert($("#div1").get(0).innerHTML);
+	//将JQ转成原生JS 0指定集合的第一个元素
+	// for (var i = 0; i < $("li").get().length; i++) {
+	// 	$("li").get(i).style.background="orange";
+	// }	
+	// for (var i = 0; i < $("li").length; i++) {
+	// 	$("li").[i].style.background="orange";
+	// }
+
+	// alert($("#div1").get(0).offsetWidth);
+	//无法获取隐藏元素的值
+	// alert($("#div1").outerWidth());
+	//显示隐藏都可以获取
+
+	// var oDiv=$("#div1").remove();
+	// //不保留事件删除，事件无法恢复
+	// $("#div1").click(function(){
+	// 	alert("123");
+	// });
+	// var oDiv=$("#div1").detach();
+	// //保留事件删除，事件可以恢复
+	// $("body").append(oDiv);
+
+
+});
+$(document).ready(function(){});
+$(function(){});//等DOM加载完，例如标签等
+window.onload=function(){};
+//整个页面加载完成，包括图片、flash
+</script>
+</head>
+<body>
+<div id="div1">divqqqq</div>
+<ul>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+</body>
+</html>

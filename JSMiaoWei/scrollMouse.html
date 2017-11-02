@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+#div1{width: 200px;height: 200px;background-color: orange;}
+</style>
+<title>scrollMouse</title>
+<script>
+	window.onload=function(){
+		var oDiv=document.getElementById("div1");
+		function onMouseScroll(ev){
+			oEvent=ev||event;
+			var bDown=true;
+			//if兼容版本
+			// if (oEvent.wheelDelta) {
+			// 	if (oEvent.wheelDelta<0) {
+			// 		bDown=true;
+			// 	} 
+			// 	else {
+			// 		bDown=false;
+			// 	}
+			// } 
+			// else {
+			// 	if (oEvent.detail>0) {
+			// 		bDown=true;
+			// 	} else {
+			// 		bDown=false;
+			// 	}
+			// }
+			//三元运算版本
+			bDown=oEvent.wheelDelta?oEvent.wheelDelta<0:oEvent.detail>0;
+			// alert(bDown);
+			if (bDown) {
+				oDiv.style.height=oDiv.offsetHeight+10+"px";
+			} else {
+				oDiv.style.height=oDiv.offsetHeight-10+"px";
+			}
+			// return false;//绑定事件无法解决
+			oEvent.preventDefault();
+		};
+		oDiv.addEventListener("DOMMouseScroll",onMouseScroll,false);
+		oDiv.addEventListener("mousewheel",onMouseScroll,false);
+	};
+</script>
+</head>
+<body style="width: 2000px; height: 2000px;">
+	<div id="div1"></div>
+</body>
+</html>

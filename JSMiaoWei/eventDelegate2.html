@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>eventDelegate</title>
+<script>
+// 事件源  ev.target
+// IE下：window.event.srcElement;
+// 其它浏览器：ev.target 
+// 好处：1.提高性能 2.新添加的元素会有原来的事件
+window.onload=function(){
+	var oUl=document.getElementById('ul1');
+	var aLi=oUl.getElementsByTagName("li");
+	var oBtn=document.getElementsByTagName("input")[0];
+	// for(var i=0;i<aLi.length;i++){
+	// 	aLi[i].onclick=(function(i){
+	// 				return function(){
+	// 					alert(i);
+	// 				}
+	// 			})(i);
+	// }
+
+	//新创建的li无法拥有原有事件
+	// for (var i = 0; i < aLi.length; i++) {
+	// 	aLi[i].onmouseover=function(){
+	// 		this.style.backgroundColor="red";
+	// 	};
+	// 	aLi[i].onmouseout=function(){
+	// 		this.style.backgroundColor="";
+	// 	};
+	// }
+
+	//给ul添加事件
+	oUl.onmouseover=function(ev){
+		//事件源兼容版本
+		var oEvent=ev||window.event;
+		var target=oEvent.target||oEvent.srcElement;
+		//nodeName:找到元素的标签名,标签名为大写
+		if (target.nodeName.toLowerCase()=="li") {
+			target.style.backgroundColor="red";
+		}
+	};	
+	oUl.onmouseout=function(ev){
+		var oEvent=ev||window.event;
+		var target=oEvent.target||oEvent.srcElement;
+		if (target.nodeName.toLowerCase()=="li") {
+			target.style.backgroundColor="";
+		}
+	};
+
+	//点击按钮，创建新元素
+	var iNow=1;
+	oBtn.onclick=function(){
+		var oLi=document.createElement('li');
+		oLi.innerHTML=1111*iNow;
+		oUl.appendChild(oLi);
+		iNow++;
+	};
+};
+</script>
+</head>
+<body>
+	<input type="button" value="创建">
+	<ul id="ul1">
+		<li>001</li>
+		<li>002</li>
+		<li>003</li>
+		<li>004</li>
+	</ul>
+</body>
+</html>

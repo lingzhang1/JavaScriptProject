@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>motionFlash</title>
+<link rel="stylesheet" href="../css/motionFlash.css">
+<script src="fnJS/startMove.js"></script>
+<script>
+function getByClass(oParent,sClass){
+	var aEle=document.getElementsByTagName("*");
+	var aResult=[];
+	for (var i = 0; i < aEle.length; i++) {
+		if (aEle[i].className==sClass) {
+			aResult.push(aEle[i]);
+		}
+	}
+	return aResult;	
+};
+window.onload=function()
+{
+	var oDiv=document.getElementById("playimages");	
+	var oBtPrev=getByClass(oDiv,"prev")[0];
+	var oBtNext=getByClass(oDiv,"next")[0];
+	var oMarkLeft=getByClass(oDiv,"mark_left")[0]; 
+	var oMarkRight=getByClass(oDiv,"mark_right")[0];
+
+	var oSmallUl=getByClass(oDiv,"small_pic")[0].getElementsByTagName("ul")[0];
+	var aSmallLi=oSmallUl.getElementsByTagName("li");
+
+	var oBigUl=getByClass(oDiv,"big_pic")[0];
+	var aBigLi=oBigUl.getElementsByTagName("li");
+	var oText=getByClass(oBigUl,"text")[0];
+	var oLength=getByClass(oBigUl,"length")[0];
+	var iNow=0;
+	var iMinZindex=2;
+	var timer=null;
+	var aIntro=["天空","座椅","舞者","汽车","美女","阳光"];
+
+	//图片文字说明
+	oText.innerHTML=aIntro[0];
+	//计算图片数量
+	oLength.innerHTML=1+"/"+aSmallLi.length;
+
+	//图片滚动，重新获取录得宽度
+	oSmallUl.style.width=aSmallLi.length*aSmallLi[0].offsetWidth+"px";
+	//左右按钮移入移出显示
+	oBtPrev.onmouseover=oMarkLeft.onmouseover=function(){
+		startMove(oBtPrev,"opacity",100);
+	};
+	oBtPrev.onmouseout=oMarkLeft.onmouseout=function(){
+		startMove(oBtPrev,"opacity",0);
+	};
+	oBtNext.onmouseover=oMarkRight.onmouseover=function(){
+		startMove(oBtNext,"opacity",100);
+	};
+	oBtNext.onmouseout=oMarkRight.onmouseout=function(){
+		startMove(oBtNext,"opacity",0);
+	};
+	//点击小图，大图下拉播放
+	for (var i = 0; i < aSmallLi.length; i++) 
+		{	
+		aSmallLi[i].index=i;
+		aSmallLi[i].onmouseover=function(){
+			startMove(this,"opacity",100);
+		};
+		aSmallLi[i].onmouseout=function(){
+			if (this.index!=iNow) {
+			startMove(this,"opacity",60);
+			} //当前点击图片透明度不变
+			
+		};
+		aSmallLi[i].onclick=function(){
+			//iNow初始值是0.
+			if (this.index==iNow) return;
+			//避免重复点击时，图片继续下拉。
+			iNow=this.index; //获取当前index值
+			tab();	
+		clearInterval(timer);
+		};
+	}
+
+	//点击按钮播放图片
+	oBtPrev.onclick=function(){
+		iNow--;
+		if (iNow==-1) 
+		{
+			iNow=aSmallLi.length-1;
+		}
+		tab();
+		clearInterval(timer);
+	};
+	oBtNext.onclick=function(){
+		iNow++;
+		if (iNow==aSmallLi.length) 
+		{
+			iNow=0;
+		}
+		tab();
+		clearInterval(timer);
+	};
+
+	//自动播放图片
+	timer=setInterval(function(){
+		timerInner();
+	},2000);
+
+	oDiv.onmouseover=function(){
+		clearInterval(timer);
+	};
+	oDiv.onmouseout=function(){
+		timer=setInterval(function(){
+			timerInner();
+		},2000);
+	};
+
+	//定时器内容
+	function timerInner(){
+		iNow++;
+		if (iNow==aSmallLi.length) 
+		{
+			iNow=0;
+		}
+		tab();
+	};
+	//播放函数
+	function tab(){
+		for (var i = 0; i < aSmallLi.length; i++) 
+		{
+			startMove(aSmallLi[i],"opacity",60);		
+		}
+		startMove(aSmallLi[iNow],"opacity",100);  //保证显示图片的透明度为1
+			
+		aBigLi[iNow].style.zIndex=iMinZindex++;//保证被点击大图永远在最上层；
+		aBigLi[iNow].style.height=0;
+		//强大图片高度清零，制造下拉效果
+		startMove(aBigLi[iNow],"height",oBigUl.offsetHeight);
+		//点击小图，ul向左移动
+		/* 0      0  */
+		/* 1      -0*li.width */
+		/* 2      -1*li.width */
+		/* 3      -2*li.width */
+		/* n      -(n-1)*li.width */
+		/* m-1    -(m-1-1)*li.width */
+		/* m      -(m-2)*li.width */
+		if (iNow==0) {
+			startMove(oSmallUl,"left",0);
+		} 
+		else if (iNow==aSmallLi.length-1) {
+		startMove(oSmallUl,"left",-(iNow-2)*aSmallLi[0].offsetWidth);
+		}
+		else {
+		startMove(oSmallUl,"left",-(iNow-1)*aSmallLi[0].offsetWidth);
+		}
+
+		//图片文字说明
+		oText.innerHTML=aIntro[iNow];
+
+		//计算图片数量
+		oLength.innerHTML=(iNow+1)+"/"+aSmallLi.length;
+	};
+
+};
+</script>
+</head>
+<body>
+	<div id="playimages" class="play">
+    <ul class="big_pic">
+		<div class="prev"></div>
+		<div class="next"></div>
+
+		<div class="text"></div>
+		<div class="length"></div>
+		
+		<a class="mark_left" href="javascript:;"></a>
+		<a class="mark_right" href="javascript:;"></a>
+		<div class="bg"></div>
+		
+        <li style="z-index:1;"><img src="../images/motionFlash/1.jpg" /></li>
+        <li><img src="../images/motionFlash/2.jpg" /></li>
+        <li><img src="../images/motionFlash/3.jpg" /></li>
+        <li><img src="../images/motionFlash/4.jpg" /></li>
+        <li><img src="../images/motionFlash/5.jpg" /></li>
+        <li><img src="../images/motionFlash/6.jpg" /></li>
+    </ul>
+    <div class="small_pic">
+        <ul style="width:390px;">
+            <li style="filter: 100; opacity: 1;"><img src="../images/motionFlash/1.jpg" /></li>
+            <li><img src="../images/motionFlash/2.jpg" /></li>
+            <li><img src="../images/motionFlash/3.jpg" /></li>
+            <li><img src="../images/motionFlash/4.jpg" /></li>
+            <li><img src="../images/motionFlash/5.jpg" /></li>
+            <li><img src="../images/motionFlash/6.jpg" /></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

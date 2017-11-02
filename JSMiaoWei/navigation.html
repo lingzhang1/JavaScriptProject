@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>navigation</title>
+    <link rel="stylesheet" type="text/css" href="../css/navigation.css">
+    <script type="text/javascript">
+        window.onload=function(){
+            var getLi=document.getElementsByTagName("li");
+
+            for (var i = 0; i < getLi.length; i++) {
+                getLi[i].onmouseover=function (){
+                    var getSpan=this.getElementsByTagName("span")[0];
+                    var getA=this.getElementsByTagName("a")[0];
+                    getA.className="active";
+                    getSpan.style.display="block";
+                    // for (var j = 0; j < getSpan.length; j++) {
+                        // if (getSpan[j].className=="float_layer") {
+                        //    getSpan[j].style.display="block"; 
+                        // }  
+                    // }
+                };
+            }
+                // getLi[i].onmouseout=function (){
+                //     var getSpan=this.getElementsByTagName("span")[0];
+                //     setInterval(function(){
+                //         getSpan.style.display="none";
+                //     },30);
+                // };
+            
+        };
+    </script>
+</head>
+
+<body>
+
+    <div id="nav">
+        <div class="adorn1"></div>
+        <div class="adorn2"></div>
+        <ul>
+            <li>
+                <a class="active" href="http://www.miaov.com"><span>首页</span></a>
+                <span class="float_layer w1 pos1 " >
+                    <span class="arrows"></span>
+                    <span class="decorate1"></span>
+                    <span class="decorate2"></span>
+                    <a href="http://www.miaov.com"><span>最近更新</span></a>
+                    <a href="http://www.miaov.com"><span>活动</span></a>
+                    <a href="http://www.miaov.com"><span>报名试听</span></a>
+                    <a href="http://www.miaov.com"><span>学员反馈</span></a>
+                </span>
+            </li>
+            <li class="line">
+                <a class="normal" href="http://www.miaov.com"><span>关于我们</span></a>
+                <span class="float_layer w2 pos2">
+                    <span class="arrows"></span>
+                    <span class="decorate1"></span>
+                    <span class="decorate2"></span>
+                    <a href="http://www.miaov.com"><span>妙味讲师</span></a>
+                    <a href="http://www.miaov.com"><span>培训方式</span></a>
+                    <a href="http://www.miaov.com"><span>培训理念</span></a>
+                    <a href="http://www.miaov.com"><span>联系我们</span></a>
+                </span>
+            </li>
+            <li class="line">
+                <a class="normal" href="http://www.miaov.com"><span>作品</span></a>
+                <span class="float_layer w3 pos3">
+                    <span class="arrows"></span>
+                    <span class="decorate1"></span>
+                    <span class="decorate2"></span>
+                    <a href="http://www.miaov.com"><span>般固</span></a>
+                    <a href="http://www.miaov.com"><span>MATRIX</span></a>
+                    <a href="http://www.miaov.com"><span>留学e网</span></a>
+                    <a href="http://www.miaov.com"><span>ECMall</span></a>
+                </span>
+            </li>
+            <li class="line">
+                <a class="normal" href="http://www.miaov.com"><span>博客</span></a>
+                <span class="float_layer w4 pos4">
+                    <span class="arrows"></span>
+                    <span class="decorate1"></span>
+                    <span class="decorate2"></span>
+                    <a href="http://www.miaov.com"><span>JS教程</span></a>
+                    <a href="http://www.miaov.com"><span>弹出层效果</span></a>
+                    <a href="http://www.miaov.com"><span>3D球面标签云</span></a>
+                    <a href="http://www.miaov.com"><span>Window计算器</span></a>
+                </span>
+            </li>
+        </ul>
+        <p><a href="http://www.miaov.com">>>更多</a></p>
+    </div>
+
+</body>
+</html>

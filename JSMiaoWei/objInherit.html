@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>objInherit</title>
+<script>
+function Person(name,sex)
+{
+	this.name=name;
+	this.sex=sex;
+};
+// Person.prototype.showName=function()
+// {
+// 	alert(this.name);
+// };
+// Person.prototype.showSex=function()
+// {
+// 	alert(this.sex);
+// };
+//Person.prototype写成Json形式
+Person.prototype={
+	showName:function(){
+		alert(this.name);
+	},
+	showSex:function(){
+		alert(this.sex);
+	}
+};
+
+function Worker(name,sex,job)
+{   //this-->Worker对象
+	Person.call(this,name,sex);
+	//调用父级的构造函数-->构造函数伪装
+	this.job=job;
+};
+// Worker.prototype=Person.prototype;
+//引用！！导致子类影响父类
+//通过原型继承父级的方法-->原型链
+
+for(var i in Person.prototype)
+{
+	Worker.prototype[i]=Person.prototype[i];
+}
+Worker.prototype.showJob=function()
+{
+	alert(this.job);
+};
+// alert(Person.prototype.showJob);
+var oW1=new Worker("hehe","nan","打杂的");
+oW1.showName();
+oW1.showSex();
+oW1.showJob();
+</script>
+</head>
+<body>
+	
+</body>
+</html>

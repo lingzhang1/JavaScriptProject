@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>clockDemo</title>
+	<script>
+		window.onload=function(){
+			var getOpen=document.getElementById("open");
+			var getClose=document.getElementById("close");
+			var timer=null;
+			getOpen.onclick=function(){
+				timer=setInterval(show,1000);
+			};
+			getClose.onclick=function(){
+				clearInterval(timer);
+			};
+		};
+		function show(){
+			alert("a");
+		};
+	</script>
+</head>
+<body>
+	<input type="button" value="开启定时器" id="open">
+	<input type="button" value="关闭定时器" id="close">
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>forpractice</title>
+	<script>
+		//01 求13的阶乘
+		// var sum=1;
+		// for (var i = 1; i <=13.; i++) 
+		// {
+		// 	sum=sum*i;
+		// }
+		// alert("13的阶乘是："+sum);
+
+
+
+		//02 得到100到999的所有水仙花数：百位数的立方+十位上数的立方+个位数的立方
+		// for(var i=100; i<=999;i++)
+		// {
+		// 	var ge=i%10;
+		// 	var bai=Math.floor(i/100);
+		// 	var shi=(i-bai*100-ge)/10;
+		// 	var flower=Math.pow(ge,3)+Math.pow(shi,3)+Math.pow(bai,3);
+		// 	if (i==flower) {
+		// 		console.log(i+"为水仙花");
+		// 	}
+			
+		// }
+
+
+
+		//得到100以内的所有质数：除了1和它本身以外，不再有其他的除数整除。
+		var c=0;
+		for (var i=1; i<=100; i++) 
+		{
+			var b=0;
+			for(var j=1;j<=i; j++)
+			{
+				var a=i%j
+				if (a==0) 
+				{
+					b++;
+				}
+			}
+			if (b<=2) 
+			{
+				console.log(i);
+				c++
+			}
+		}
+		console.log("共有质数："+c+"个");
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

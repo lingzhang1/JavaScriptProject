@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>motionRotateImg</title>
+<link rel="stylesheet" href="../css/motionRotateImg.css">
+<script src="fnJS/startMove_Json.js"></script>
+<script> 
+window.onload=function(){
+	var oNum=document.getElementById('num');
+	var aDiv=oNum.getElementsByTagName('div');
+	var oImgWrap=document.getElementById('imgWrap');
+	var oUl=oImgWrap.getElementsByTagName('ul')[0];
+	var aLi=oUl.getElementsByTagName('li');
+	var minZindex=5;
+	var count=[0];
+	var timer=null;
+	var num=0;
+	for (var i=0; i < aDiv.length; i++) {
+		aDiv[i].index=i;
+		//点击播放
+		aDiv[i].onclick=function(){
+			//关闭两个定时器
+			clearInterval(timer);
+			//将索引值复制给num
+			num=this.index;
+			//调用运动函数
+			move();
+		};
+		//移入暂停，移出运动
+		aLi[i].onmouseover=function(){
+			clearInterval(timer);
+		};
+		aLi[i].onmouseout=function(){
+			timer=setInterval(function(){
+				timerinner();
+			},1000);
+		};
+	}
+	//自动播放
+	clearInterval(timer);
+	timer=setInterval(function(){
+		timerinner();
+	},1000);
+
+	//定时器内容
+	function timerinner(){
+		move();
+		num++;
+		if (num>4) {
+			num=0;
+		}
+	};
+	//图片层叠，上下滑动移动
+	function move(){
+		for (var j = 0; j < aDiv.length;j++) {
+			aDiv[j].className="";
+		}
+		aDiv[num].className="active";
+		//z-index不断增加
+		minZindex++;
+		var aLiHeight=aLi[num].offsetHeight;
+		//将对象加入数组中，数组第一个元素初始化为0
+		count.push(num);
+		//比较数组中两个元素大小
+		if (count[1]-count[0]>0) {
+			aLi[num].style.zIndex=minZindex;
+			oNum.style.zIndex=++minZindex;
+			//图片上滑展现
+			aLi[num].style.top=aLiHeight+"px";
+			startMove(aLi[num],{top:0});
+		}
+		else if (count[1]-count[0]<0) {
+			aLi[num].style.zIndex=minZindex;
+			oNum.style.zIndex=++minZindex;
+			//图片下滑展现
+			aLi[num].style.height=0;
+			startMove(aLi[num],{height:aLiHeight});
+		}
+		//删除数组中第0个数据，保证数组长度一直为2
+		count.splice(0,1);
+	};
+};
+</script>
+</head>
+<body>
+	<div class="imgWrap" id="imgWrap">
+		<ul class="img">
+			<li class="show"><a href="#"><img src="../images/VQueryRotateImg/1.jpg"></a></li>
+			<li><a href="#"><img src="../images/VQueryRotateImg/2.jpg"></a></li>
+			<li><a href="#"><img src="../images/VQueryRotateImg/3.jpg"></a></li>
+			<li><a href="#"><img src="../images/VQueryRotateImg/4.jpg"></a></li>
+			<li><a href="#"><img src="../images/VQueryRotateImg/5.jpg"></a></li>
+		</ul>	
+		<div class="num" id="num">
+			<div class="active">1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+		</div>
+	</div>
+</body>
+</html>

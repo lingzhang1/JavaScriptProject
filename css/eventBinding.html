@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>eventBinding</title>
+<script>
+	function aaa(){
+		alert("a");
+	};
+	function bbb(){
+		alert("b");
+	};
+	function myAddEvent(obj,sEvent,fn){
+		if (obj.attachEvent) {
+			obj.attachEvent("on"+sEvent,fn);
+		} else {
+			obj.addEventListener(sEvent,fn,false);
+		}
+	};
+	window.onload=function(){
+		var oBtn=document.getElementById("btn1");
+		// oBtn.onclick=function(){
+		// 	alert(this);//this为input
+		// };
+		oBtn.addEventListener("click",function(){
+			alert(this); 
+			//绑定事件后this变成 window
+		},false);
+		oBtn.removeEventListener("click",function(){
+			alert(this);
+		},false);
+
+		// oBtn.onclick=aaa;
+		// oBtn.onclick=bbb;
+		// oBtn.attachEvent("onclick",aaa);
+		// oBtn.attachEvent("onclick",bbb);
+		// oBtn.addEventListener("click",aaa,false);
+		// oBtn.addEventListener("click",bbb,false);
+		// oBtn.removeEventListener("click",bbb,false);
+		// myAddEvent(oBtn,"click",aaa);
+		// myAddEvent(oBtn,"click",bbb);
+	};
+</script>
+</head>
+<body>
+	<input type="button" value="执行事件" id="btn1">
+</body>
+</html>

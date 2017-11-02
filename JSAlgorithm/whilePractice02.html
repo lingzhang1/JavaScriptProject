@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>whilepractice02</title>
+	<script>
+		//输入用户名和密码，如果正确，提示正确。如果错误，一直输入。
+		var key="dearallen";
+		var name="allen";
+		var getname=prompt("请输入用户名：");
+		var getkey=prompt("请输入密码：");
+		// 	while(getname!=name||getkey!=key)
+		// 	{
+		// 		alert("输入错误，请重新输入");
+		// 		var getname=prompt("请输入用户名：");
+		// 		var getkey=prompt("请输入密码：");
+		// 	}	
+		// alert("输入正确！");
+
+
+		while(true)
+		{
+			if (getname==name||getkey==key) 
+			{
+				alert("输入正确");
+				break;
+			}
+			else
+			{
+				alert("输入不正确，请重新输入！");
+				var getname=prompt("请输入用户名：");
+				var getkey=prompt("请输入密码：");
+			}
+		}
+		alert("over");
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

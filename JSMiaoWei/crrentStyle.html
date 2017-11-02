@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>currentStyle</title>
+	<style>
+	#div1{
+		width: 100px;
+		height: 100px;
+		background-color: orange;
+	}
+	</style>
+	<script>
+		window.onload=function(){
+			var oDiv=document.getElementById("div1");
+			// alert(oDiv.currentStyle.width);//只兼容IE
+			// alert(getComputedStyle(oDiv,false).width);//火狐兼容 谷歌兼容 IE兼容
+			//获取计算后的样式（当前样式）
+			if (oDiv.currentStyle) {
+				alert(oDiv.currentStyle.width);
+			} else {
+				alert(getComputedStyle(oDiv,false).width);
+			}
+		};
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

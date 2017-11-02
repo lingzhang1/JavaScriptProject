@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>menueBar</title>
+	<style>
+	*{ margin:0 auto; padding:0; border:0 none;}
+	#box{
+		width: 400px;
+		/*margin: 0 auto;*/
+	}
+	#box>div{
+		float: left;
+		margin: 5px;
+	}
+	.menue1,.menue2,.menue3,.menue4{
+		width: 80px;
+		height: 30px;
+		background-color:#fe4;
+		border:1px solid #ccf;
+		text-align: center;
+	}
+
+	.inner{
+		width: 80px;
+		background-color: pink;
+		text-align: center;
+		/*margin-top: 3px;  一定是父盒子的padding，而不是子盒子的margin*/
+		
+	}
+	#libox1,#libox2,#libox3,#libox4{
+		display: none;
+		padding-top: 3px;
+		/*background-color: black;*/
+	}
+	li,a{
+		text-decoration: none;
+		list-style: none;
+		color: #333;
+		line-height: 30px;	
+	}
+	
+	</style>
+	<script>
+		function comeover1(){
+			document.getElementById("libox1").style.display="block";
+		}
+		function comeout1(){
+			document.getElementById("libox1").style.display="none";
+		}	
+		function comeover2(){
+			document.getElementById("libox2").style.display="block";
+		}
+		function comeout2(){
+			document.getElementById("libox2").style.display="none";
+		}	
+		function comeover3(){
+			document.getElementById("libox3").style.display="block";
+		}
+		function comeout3(){
+			document.getElementById("libox3").style.display="none";
+		}	
+		function comeover4(){
+			document.getElementById("libox4").style.display="block";
+		}
+		function comeout4(){
+			document.getElementById("libox4").style.display="none";
+		}
+
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div onmouseover="comeover1()" onmouseout="comeout1()">
+			<div class="menue1">
+				<a href="#">菜单1</a>
+			</div>
+			<div id="libox1">
+				<ul class="inner">
+					<li><a href="#">项目1</a></li>
+					<li><a href="#">项目2</a></li>
+					<li><a href="#">项目3</a></li>
+					<li><a href="#">项目4</a></li>
+					<li><a href="#">项目5</a></li>
+					<li><a href="#">项目6</a></li>
+				</ul>
+			</div>
+			
+		</div>
+		<div onmouseover="comeover2()" onmouseout="comeout2()">
+			<div class="menue2">
+				<a href="#">菜单2</a>
+			</div>
+			<div id="libox2">
+				<ul class="inner">
+					<li><a href="#">项目1</a></li>
+					<li><a href="#">项目2</a></li>
+					<li><a href="#">项目3</a></li>
+					<li><a href="#">项目4</a></li>
+					<li><a href="#">项目5</a></li>
+					<li><a href="#">项目6</a></li>
+				</ul>
+			</div>
+			
+		</div>
+		<div onmouseover="comeover3()" onmouseout="comeout3()">
+			<div class="menue3">
+				<a href="#">菜单3</a>
+			</div>
+			<div id="libox3">
+				<ul class="inner">
+					<li><a href="#">项目1</a></li>
+					<li><a href="#">项目2</a></li>
+					<li><a href="#">项目3</a></li>
+					<li><a href="#">项目4</a></li>
+					<li><a href="#">项目5</a></li>
+					<li><a href="#">项目6</a></li>
+				</ul>
+			</div>
+			
+		</div>
+		<div onmouseover="comeover4()" onmouseout="comeout4()">
+			<div class="menue4">
+				<a href="#">菜单4</a>
+			</div>
+			<div id="libox4">
+				<ul class="inner">
+					<li><a href="#">项目1</a></li>
+					<li><a href="#">项目2</a></li>
+					<li><a href="#">项目3</a></li>
+					<li><a href="#">项目4</a></li>
+					<li><a href="#">项目5</a></li>
+					<li><a href="#">项目6</a></li>
+				</ul>
+			</div>		
+		</div>
+	</div>
+</body>
+</html>

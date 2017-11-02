@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>objectArray</title>
+<script>
+	var arr1=new Array(12,33,44,65,79);
+	var arr2=new Array(65,34,26,48,90,76);
+	Array.prototype.sum=function(){
+		var result=0;
+		for (var i = 0; i < this.length; i++) {
+			result+=this[i];
+		}
+		return result;
+	};
+
+	alert(arr1.sum());
+	alert(arr2.sum());
+</script>
+</head>
+<body>
+	
+</body>
+</html>

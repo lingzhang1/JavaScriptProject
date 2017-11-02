@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>webSkinChange</title>
+	<!-- <link rel="stylesheet" href="../css/skin_1.css"> -->
+	<link rel="stylesheet" href="../css/skin_1.css" id="skin1">
+	<link rel="stylesheet" href="../css/cssReset.css">
+	<script>
+		window.onload=function (){
+			var getSkin1=document.getElementById("but1");
+			getSkin1.onclick=changeSkin1;
+			var getSkin2=document.getElementById("but2");
+			getSkin2.onclick=changeSkin2;
+		}
+		function changeSkin1(){
+			document.getElementById("skin1").href="../css/skin_1.css";
+		};
+		function changeSkin2(){
+			document.getElementById("skin1").href="../css/skin_2.css";
+		};
+	</script>
+</head>
+<body>
+	<div class="messageBox">
+		<div class="changeSkin">
+			可换皮肤的提示框：
+			<input type="button" value="皮肤1" id="but1">
+			<input type="button" value="皮肤2" id="but2">
+		</div>
+		<div class="message">
+			输入姓名：<input class="textRect" type="text"> <br>
+			输入密码：<input class="textRect" type="password"> <br>
+			请您留言：<input class="textRect_a" type="textarea"> <br>
+			<input class="sub" type="submit" value="提交">
+		</div>
+	</div>
+</body>
+</html>

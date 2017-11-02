@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JQEvent2</title>
+<script src="../JQuery/jquery-1.12.2.js"></script>
+<script>
+$(function(){
+	$("#div1").on("click",{class:"hello"},function(ev){
+		alert(ev.data.class); //hello
+		alert(ev.target); //div
+		alert(ev.type); //click
+	});
+});
+</script>
+</head>
+<body>
+	<div id="div1">aaaaa</div>
+</body>
+</html>

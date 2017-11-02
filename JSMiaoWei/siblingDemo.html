@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sibling</title>
+	<script>
+		window.onload=function(){
+
+			var oUl=document.getElementById("ul1");
+			var oLi=document.getElementById("li1");
+			oLi.previousElementSibling.style.backgroundColor="red";
+			oLi.nextElementSibling.style.backgroundColor="blue";
+
+		};
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li></li>
+		<li></li>
+		<li id="li1">111</li>
+		<li></li>
+	</ul>
+</body>
+</html>

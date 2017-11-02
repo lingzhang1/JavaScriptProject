@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>dragMouse</title>
+<style>
+#div1{
+	width: 100px;
+	height: 100px;
+	background-color: orange;
+	position: absolute;
+}
+body{
+	width: 2000px;
+	height: 2000px;
+}
+</style>
+<!-- <script src="fnJS/drag.js"></script> -->
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById("div1");
+	// drag(oDiv);
+	var iDisX=0;
+	var iDisY=0;
+	oDiv.onmousedown=function(ev){
+		var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+		var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+		var iDisX=ev.clientX+scrollLeft-oDiv.offsetLeft;
+		var iDisY=ev.clientY+scrollTop-oDiv.offsetTop;
+		document.onmousemove=function(ev){
+			var l=ev.clientX+scrollLeft-iDisX;
+			var t=ev.clientY+scrollTop-iDisY;
+			var rightDis=document.documentElement.clientWidth+scrollLeft-oDiv.offsetWidth;
+			var bottomDis=document.documentElement.clientHeight+scrollTop-oDiv.offsetHeight;
+			if (l<0) {
+				l=0;//限制拖拽出可视区左侧
+			}
+			else if (l>rightDis) {
+				l=rightDis;//限制拽出可视区右侧
+			}
+			if (t<0) {
+				t=0;
+				//限制拖拽出可视区上侧
+			}  
+			else if (t>bottomDis) {
+				//限制拖拽出可视区下侧
+				t=bottomDis;
+			}
+			oDiv.style.left=l+"px";
+			oDiv.style.top=t+"px";
+			window.onresize=function(){
+				var rightDis=document.documentElement.clientWidth+scrollLeft-oDiv.offsetWidth;
+			 	var bottomDis=document.documentElement.clientHeight+scrollTop-oDiv.offsetHeight;
+			 	if (oDiv.offsetLeft>rightDis) {
+			 		oDiv.style.left=rightDis+"px";
+			 	}
+			 	if (oDiv.offsetTop>bottomDis) {
+			 		oDiv.style.top=bottomDis+"px";
+			 	}
+			}; //变化屏幕尺寸，div一直显示在可视区。
+		};
+		return false;//解决火狐拖拽BUG
+		 
+	};
+    document.onmouseup=function(){
+		document.onmousemove=null;
+	    // document.onmouseup=null;
+		};
+};
+</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

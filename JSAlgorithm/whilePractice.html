@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>whilepractice</title>
+	<script>
+		//01 
+		//得到1到100相加的和5050
+		// var a=1;
+		// var sum=0;
+		// while(a<=100){
+		// 	sum+=a;
+		// 	a++;
+		// }
+		// console.log(sum);
+
+		//02
+		var a=prompt("老师讲的你们都懂了没？");
+		if (a=="yes") 
+		{
+			alert("直接放学！");
+		}
+		else if (a=="no") 
+		{
+			alert("老师在讲一次！");
+			var b=prompt("听懂了吗?不懂再讲一次！");
+			var c=1;
+			while(b=="no"&&c<=9){
+			alert("老师在讲一次！");
+			var b=prompt("听懂了吗?不懂再讲一次！");
+			c++;
+			}
+			if (b=="yes") {
+				alert("听懂了放学！");
+			}
+			else if (b=="no") {
+				alert("讲了十遍还不懂放学！");
+			}
+		}
+		alert("over");
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

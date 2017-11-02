@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	window.onload=function(){
+		var oTxt1=document.getElementById("text1");
+		var oTxt2=document.getElementById("text2");
+		var oBtn=document.getElementById("btn");
+		oBtn.onclick=function(){
+			oTxt1.innerHTML+=oTxt2.value+"\n";
+			oTxt2.value="";
+		};
+		document.onkeydown=function(ev){
+			if (ev.ctrlKey&&ev.keyCode==13) {
+				if (oTxt2.value=="") {
+					alert("输入不能为空");
+				}
+				else{
+					oTxt1.innerHTML+=oTxt2.value+"\n";
+					oTxt2.value="";
+				}
+			}
+		};
+	};
+		
+	
+	</script>
+</head>
+<body>
+	<textarea name="" id="text1" cols="30" rows="10" ></textarea><br>
+	<input type="text" id="text2" >
+	<input type="button" value="提交" id="btn">
+</body>
+</html>

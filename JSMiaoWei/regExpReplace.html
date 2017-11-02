@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>regExpReplace</title>
+<script>
+window.onload=function(){
+	var oTxt1=document.getElementById("txt1");
+	var oTxt2=document.getElementById("txt2");
+	var oBtn=document.getElementById("btn");
+	oBtn.onclick=function(){
+		var re=/<[^<>]+>/g;//左右尖括号及括号中的所有内容,但不能出现尖括号
+		oTxt2.value=oTxt1.value.replace(re,"");
+	};
+};
+	// var str="aaadvdkAAAljsdjf"
+	// var re=/a/gi;
+	// alert(str.replace(re,"T"));
+</script>	
+</head>
+<body>
+转换前<br>
+<textarea name="" id="txt1" cols="30" rows="10"></textarea><br>
+<input type="button" value="过滤" id="btn"><br>
+转换后<br>
+<textarea name="" id="txt2" cols="30" rows="10"></textarea>
+</body>
+</html>

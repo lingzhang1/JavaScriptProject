@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VQueryToggle</title>
+<style>
+#div1{ background-color:orange; width: 100px;height: 100px; }
+</style>
+<!-- <script src="../JQuery/jquery-2.2.2.js"></script> -->
+<script src="VQuery.js"></script>
+<script>
+$(function(){
+	$("input").toggle(function(){
+		alert(1);
+	},function(){
+		alert(2);
+	},function(){
+		alert(3);
+	});
+});	
+</script>
+</head>
+<body>
+	<input type="button" id="btn" value="显示隐藏">	
+	<input type="button" id="btn1" value="显示隐藏">	
+	<input type="button" id="btn2" value="显示隐藏">	
+	<input type="button" id="btn3" value="显示隐藏">	
+	<div id="div1"></div>
+</body>
+</html>

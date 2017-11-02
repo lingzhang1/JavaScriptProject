@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ifpracticedemo</title>
+	<script>
+		var num1=prompt("请输入汽油型号");
+		var num2=prompt("请输入汽油升数");
+		var pay;
+		if (num1==92) 
+		{
+			if (num2>=20) 
+			{
+				pay=num2*5.9;
+				alert("应付金额："+pay);
+			}
+			else if (num2<20&&num2>0)
+			{
+				pay=num2*6;
+				alert("应付金额："+pay);
+			}
+			else
+			{
+				alert("输入升数错误");
+			}
+
+		}
+		else if(num1==97) 
+		{
+			if (num2>=30)
+			{
+				pay=num2*6.95;
+				alert("应付金额："+pay);
+			}
+			else if (num2>0&&num2<30) 
+			{
+				pay=num2*7;
+				alert("应付金额："+pay);
+			}
+			else
+			{
+				alert("输入汽油升数错误");
+			}
+
+		}
+		else
+		{
+			alert("输入汽油型号错误");
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

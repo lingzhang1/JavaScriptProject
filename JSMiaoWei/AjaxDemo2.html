@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AjaxDemo2</title>
+	<script>
+		window.onload=function(){
+			var aBtn=document.getElementsByTagName("input");
+			var oTxt=document.getElementById("txt1");
+			for (var i = 0; i < aBtn.length; i++) {
+				aBtn[i].index=i;
+				aBtn[i].onclick=function(){
+					ajax(this.index+1+".txt",function(str){
+						oTxt.innerHTML=str;
+					});
+				};
+			}
+		};
+	</script>
+</head>
+<body>
+	<input type="button" value="文档一">
+	<input type="button" value="文档二">
+	<input type="button" value="文档三"> <br>
+	<textarea name="" id="txt1" cols="30" rows="10"></textarea>
+</body>
+</html>

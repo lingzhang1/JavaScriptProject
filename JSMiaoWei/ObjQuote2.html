@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<script>
+	// 对象和函数都是引用得关系
+	var a=[1,2,3];
+	var b=a;
+	//b直接引用a,对b进行修改，a也同时改变
+	b.push(4);
+	alert(a);//1234
+	alert(b);//1234
+
+	var a=[1,2,3];
+	var b=a;
+	//用新的数组将原数组替换，a与b脱离关系
+	b=[1,2,3,4];
+	alert(b);//1234
+	alert(a);//123
+</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>customRightClickMenu</title>
+	<style>
+	*{padding:0; margin:0;}
+	#ul1{
+		width: 100px;
+		background-color: #ccc;
+		border: 1px solid #000;
+		position:absolute;
+		display: none;
+		list-style: none;
+	}
+	</style>
+	<script>
+		document.oncontextmenu=function(ev){
+			var oUl=document.getElementById("ul1");
+			var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+			var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+			oUl.style.display="block";
+			oUl.style.left=scrollTop+ev.clientX+"px";
+			oUl.style.top=scrollTop+ev.clientY+"px";
+			return false;
+		};
+		document.onclick=function(){
+			var oUl=document.getElementById("ul1");
+			oUl.style.display="none";
+		};
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li>登录</li>
+		<li>回到首页</li>
+		<li>注销</li>
+		<li>VIP</li>
+	</ul>
+</body>
+</html>

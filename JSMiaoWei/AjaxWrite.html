@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AjaxWrite</title>
+	<style>
+	/*#btn{
+		background-color: orange;
+	}*/
+	</style>
+	<script>
+		// alert(a); //不存在变量会报错
+		// alert(window.a);
+		//不存在属性不会保存，能够alert出undefined
+		window.onload=function(){
+			var oBtn=document.getElementById("btn");
+
+			oBtn.onclick=function(){ 
+
+				var oAjax=new XMLHttpRequest("Microsoft.XMLHTTP");
+				// alert(oAjax);
+				//IE6兼容
+
+				//连接服务器
+				oAjax.open("GET","abc.txt",true);
+				//发送请求
+				oAjax.send();
+				//接收返回
+				oAjax.onreadystatechange=function(){
+					if (oAjax.readyState==4) {
+						if (oAjax.status==200) {
+							alert("成功"+oAjax.responseText);
+						}
+						else{
+							alert("失败");
+						}
+					}
+				};
+			};
+		};
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="读取文件" style="background-color: orange;">
+</body>
+</html>

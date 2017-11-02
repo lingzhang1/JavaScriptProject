@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>firstLastNode</title>
+	<script>
+		window.onload=function(){
+			var oUl=document.getElementById("ul1");
+			var oFirst=oUl.firstChild||oUl.firstElementChild;
+			oUl.firstElementChild.style.backgroundColor="red";
+			oUl.lastChild.style.backgroundColor="blue";
+		};
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

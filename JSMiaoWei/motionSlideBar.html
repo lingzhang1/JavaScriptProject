@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>motionSlideBar</title>
+<style>
+* { padding: 0; margin: 0; }
+li { list-style: none; }
+
+ul { width: 400px; height: 30px; position: relative; margin: 100px auto 0; }
+li { float: left; width: 98px; height: 28px; line-height: 28px; border: 1px solid #ccc; text-align: center; z-index: 2; position: relative; cursor: pointer; }
+.bg { width: 100px; height: 5px; overflow: hidden; background: red; border: none; position: absolute; top: 24px; left: 0; z-index: 1; }
+</style>
+<script>
+var iSpeed=0;
+var fAttr=0;//引入位置变量
+function startMove(obj,attr,iTarget){
+	clearInterval(obj.timer);
+	obj.timer=setInterval(function(){
+		iSpeed+=(iTarget-fAttr)/5;
+		iSpeed*=0.7;
+		fAttr+=iSpeed;
+		// obj.style.left=obj.offsetLeft+iSpeed+"px";
+		if (Math.abs(iSpeed)<1&&Math.abs(iTarget-fAttr)<1) {
+			//停止条件判断：距离小于一，速度小于一
+			clearInterval(obj.timer);
+			obj.style[attr]=iTarget+"px";
+			//保证关闭后严格到达目标点
+		} else {
+			obj.style[attr]=fAttr+"px";
+		//将速度和位置值小数值保留下来
+		}
+	},30);
+};
+window.onload=function(){
+	var oUl=document.getElementById("ul1");
+	var aLi=oUl.getElementsByTagName("li");
+	var oBg=aLi[aLi.length-1];
+	for (var i = 0; i < aLi.length-1; i++) {
+		aLi[i].onmouseover=function(){
+		startMove(oBg,"left",this.offsetLeft);
+		};
+	}
+};	
+</script>
+</head>
+<body>
+	<ul id="ul1">
+	<li>首页</li>
+	<li>关于我们</li>
+	<li>产品</li>
+	<li>联系方式</li>
+    <li class="bg"></li>
+</ul>
+</body>
+</html>

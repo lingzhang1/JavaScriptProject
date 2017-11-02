@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JQWays</title>
+<style>
+	div{width: 100px;height: 100px;background-color: red;}
+</style>
+<script src="../JQuery/jquery-1.12.2.js"></script>
+<script>
+$(function(){
+	//attr
+	// alert($("div").attr("title"));
+	// $("div").attr("title","656788")
+	// $("div").attr("class","box")
+	// alert($("div").attr("class"));
+
+	//filter
+	// $("div").filter(".box").css("backgroundColor","orange");
+	// //not
+	// $("div").not(".box").css("backgroundColor","orange");
+
+	//has() 包含
+	// $("div").has("span").css("backgroundColor","orange");
+
+	//next() prev()
+	// $("div").next().css("background","orange");
+	// $("span").next().css("background","orange");
+
+	//find() 查找
+	// $("#div2").find("h2").css("background","orange");
+
+	//eq()  下标
+ 	// $("#div2").find("h2").eq(1).css("background","orange");
+
+ 	//index() 元素索引
+ 	// alert($("#h").index());
+
+ 	//html() 元素内容
+ 	$("#h").html();//获取
+ 	$("#h").html("hehe");//修改
+
+
+});
+</script>
+</head>
+<body>
+	<div title="123" class="box"><span></span></div>
+	<span>span</span>
+	<div id="div2">
+		<h2>h2</h2>
+		<h2>h2</h2>
+		<h2>h2</h2>
+		<h3 id="h">h3</h3>
+		<h3>h3</h3>
+		<h3>h3</h3>
+	</div>
+</body>
+</html>

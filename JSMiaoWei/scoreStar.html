@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>scoreStar</title>
+	<style>
+	#wrap{ 
+		width: 300px;
+		height: 100px;
+		margin: 200px auto; 
+		/*border: 1px solid #000;*/
+	}
+	#wrap div{
+		width: 20px;
+		height: 20px;
+		background-color: #ccc;
+		float: left;
+		margin-left: 5px;
+		border: 1px solid #bbb;
+	}
+	p{
+		width: 100px;
+		height: 30px;
+		border: 1px solid #bbb;
+		text-align: center;
+		line-height: 30px;
+		margin-left: 10px;
+		display: none;
+	}
+	#wrap .active{
+		background-color: orange;
+	}
+	</style>
+	<script>
+		window.onload=function(){
+			var getDiv=document.getElementById("wrap").getElementsByTagName("div");
+			var getP=document.getElementsByTagName("p")[0];
+			var content=["较差","一般","较好","推荐","强烈推荐"];
+			
+			for (var i = 0; i < getDiv.length; i++) {
+				getDiv[i].index=i;
+				// function show(){
+				// 	for (var i = 0; i <=this.index; i++) {
+				// 		getDiv[i].className="active";
+				// 	}
+				// };
+			 //    function hide(){
+				// 	for (var i = 0; i <=this.index; i++) {
+				// 		getDiv[i].className="";
+				// 	}
+				// };
+				getDiv[i].onmouseover=function(){
+					getP.style.display="block";
+					getP.innerHTML=content[this.index];
+					// show();
+					for (var i = 0; i <=this.index; i++) {
+					getDiv[i].className="active";
+					}
+				};
+				getDiv[i].onmouseout=function(){
+					getP.style.display="none";
+					for (var i = 0; i <=this.index; i++) {
+						getDiv[i].className="";
+					}
+				};
+				getDiv[i].onclick=function(){
+					alert("评分："+(this.index+1));
+					// show();
+					for (var i = 0; i <=this.index; i++) {
+							getDiv[i].className="active";
+						}
+					getDiv[this.index].onmouseout=function(){
+						getP.style.display="none";
+						for (var i = 0; i <=this.index; i++) {
+							getDiv[i].className="active";
+						}
+				    };
+				};
+				
+			}
+		};
+	</script>
+</head>
+<body>
+<div id="wrap">
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<br>
+	<p>一般</p>
+</div>
+	
+</body>
+</html>

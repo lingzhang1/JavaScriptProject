@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>attributeDemo</title>
+	<script>
+		window.onload=function(){
+			var oTxt=document.getElementById("text1");
+			oTxt.value="13";
+			oTxt["value"]="abc";
+			oTxt.setAttribute("value","1234");
+			alert(oTxt.getAttribute("type"));
+		};
+	</script>
+</head>
+<body>
+	<input type="text" id="text1">
+</body>
+</html>

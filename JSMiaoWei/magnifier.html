@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>magnifier</title>
+<style>
+#div1 { width: 200px; height: 200px; padding: 5px; border: 1px solid #ccc; position: relative; }
+
+#div1 .small_pic { width: 200px; height: 200px; background: #eee; position: relative; }
+#div1 .float_layer { width: 50px; height: 50px; border: 1px solid #000; background: #fff; /*filter: alpha(opacity: 30);*/ opacity: 0.3; position: absolute; top: 0; left: 0; display:none; }
+#div1 .mark {width:100%; height:100%; position:absolute; z-index:2; left:0px; top:0px; background:red; /*filter:alpha(opacity:0); */opacity:0;}
+#div1 .big_pic { position: absolute; top: -1px; left: 215px; width:112px; height:112px; overflow:hidden; border:2px solid #CCC; display:none; }/*450x450*/
+#div1 .big_pic img { position:absolute; /*top: -30px; left: -80px;*/ }	
+</style>
+<script>
+function getByClass(sParent,sClass){
+	var aEle=sParent.getElementsByTagName("*");
+	var aTmp=[];
+	var re=new RegExp("\\b"+sClass+"\\b","i");
+
+	for (var i = 0; i < aEle.length; i++) {
+		if (re.test(aEle[i].className)) {
+		    aTmp.push(aEle[i]); 
+		}
+	}
+	return aTmp;
+};
+window.onload=function(){
+	var oDiv=document.getElementById("div1");
+	var oMark=getByClass(oDiv,"mark")[0];
+	var oFloat=getByClass(oDiv,"float_layer")[0];
+	var oBig=getByClass(oDiv,"big_pic")[0];
+	var oSmall=getByClass(oDiv,"small_pic")[0];
+	var oImg=oBig.getElementsByTagName("img")[0];
+	oMark.onmouseover=function(){
+		oFloat.style.display="block"
+		oBig.style.display="block";
+	};
+	oMark.onmouseout=function(){
+		oFloat.style.display="none"
+		oBig.style.display="none";
+	};
+		// 当父级有border或者padding使用offset注意：
+		// oDiv.offsetWidth;
+		// oDiv.offsetHeight;
+		// 包含border和padding宽度
+		// oDiv.offsetLeft;
+		// oDiv.offsetTop;
+		// 包含margin宽度
+	oMark.onmousemove=function(ev){
+		var oEvent=event||ev;
+		var iBorPadL=parseInt(getComputedStyle(oDiv,false)["borderLeft"])+parseInt(getComputedStyle(oDiv,false)["paddingLeft"]);
+		var iBorPadT=parseInt(getComputedStyle(oDiv,false)["borderTop"])+parseInt(getComputedStyle(oDiv,false)["paddingTop"]);
+
+		var disX=oEvent.clientX-oDiv.offsetLeft-iBorPadL-oFloat.offsetWidth/2;
+//鼠标位置-div1的left-div1的边框-div1的padding
+		var disY=oEvent.clientY-oDiv.offsetTop-iBorPadT-oFloat.offsetHeight/2;
+
+		if(disX<0){
+			disX=0;
+		}
+		else if(disX>oMark.offsetWidth-oFloat.offsetWidth){
+			disX=oDiv.offsetWidth-iBorPadL*2-oFloat.offsetWidth;
+		}
+		if (disY<0) {
+			disY=0;
+		} 
+		else if(disY>oMark.offsetHeight-oFloat.offsetHeight) {
+			disY=oDiv.offsetHeight-iBorPadT*2-oFloat.offsetHeight;
+		}
+
+		oFloat.style.left=disX+"px";
+		oFloat.style.top=disY+"px";
+
+		//等比例移动大图位置
+		var percentX=disX/(oMark.offsetWidth-oFloat.offsetWidth);
+		var percentY=disY/(oMark.offsetHeight-oFloat.offsetHeight);
+		oImg.style.left=-percentX*(oImg.offsetWidth-oBig.offsetWidth)+"px";	
+		oImg.style.top=-percentY*(oImg.offsetHeight-oBig.offsetHeight)+"px";
+
+	};
+};	
+</script>
+</head>
+<body>
+<div id="div1">
+
+    <div class="small_pic">
+		<span class="mark"></span>
+        <span class="float_layer"></span>
+        <img src="../images/magnifier/small.png" alt="妙味课堂 - 放大镜图片一" longdesc="http://www.miaov.com" />
+    </div>
+
+    <div class="big_pic">
+		<img src="../images/magnifier/big.png" alt="妙味课堂 - 放大镜图片二" longdesc="http://www.miaov.com" />
+	</div>
+</div>
+</body>
+</html>

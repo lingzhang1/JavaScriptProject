@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>motionRotateImg2</title>
+<link rel="stylesheet" href="../css/motionRotateImg2.css">
+<script src="fnJS/startMove_Json.js"></script>
+<script> 
+window.onload=function(){
+	var oNum=document.getElementById('num');
+	var aDiv=oNum.getElementsByTagName('div');
+	var oImgWrap=document.getElementById('imgWrap');
+	var oUl=oImgWrap.getElementsByTagName('ul')[0];
+	var aLi=oUl.getElementsByTagName('li');
+	var timer=null;
+	var timer2=null;
+	var num=0;
+	//点击播放
+	for (var i = 0; i < aDiv.length; i++) {
+		aDiv[i].index=i;
+		aDiv[i].onclick=function(){
+			clearInterval(timer);
+
+			num=this.index;
+			move();
+		};
+		//移入移出暂停
+		aLi[i].onmouseover=function(){
+			clearInterval(timer);
+			clearInterval(timer2);
+		};
+		aLi[i].onmouseout=function(){
+			timer=setInterval(function(){
+				timerInner();
+			},1000);
+		};
+	}
+	//自动播放
+	clearInterval(timer);
+	timer=setInterval(function(){
+		timerInner();
+	},1000);
+	
+	//定时器内容
+	function timerInner(){
+		num++;
+		if (num>4) {
+			num=0;
+		}
+		move();
+	};
+	
+	//图片顺序上下排列移动
+	function move(){
+	for (var j = 0; j < aDiv.length; j++) {
+			aDiv[j].className="";
+		}
+		aDiv[num].className="active";
+		var imgHeight=aLi[num].offsetHeight;
+		startMove(oUl,{top:-imgHeight*num});
+	};
+};
+</script>
+</head>
+<body>
+	<div class="imgWrap" id="imgWrap">
+		<ul>
+			<li><a href="#"><img src="../images/VQueryRotateImg/1.jpg"></a></li>
+			<li><a href="#"><img src="../images/VQueryRotateImg/2.jpg"></a></li>
+			<li><a href="#"><img src="../images/VQueryRotateImg/3.jpg"></a></li>
+			<li><a href="#"><img src="../images/VQueryRotateImg/4.jpg"></a></li>
+			<li><a href="#"><img src="../images/VQueryRotateImg/5.jpg"></a></li>
+		</ul>	
+		<div class="num" id="num">
+			<div class="active">1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+		</div>
+	</div>
+</body>
+</html>

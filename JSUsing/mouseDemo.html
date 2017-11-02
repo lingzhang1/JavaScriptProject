@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mouseDemo</title>
+	<style>
+		div{width: 200px; height: 200px; background: red;}
+	</style>
+	<script>
+		function change(){
+			document.getElementById("box").style.backgroundImage
+			="url(../../webproject/img/1.jpg)";
+		}	
+		function back(){
+			document.getElementById("box").style.backgroundImage
+			="url(../../webproject/img/3.jpg)";
+		}
+
+	</script>
+</head>
+<body>
+	<div id="box" onmouseover="change()" onmouseout="back()"></div>
+</body>
+</html>

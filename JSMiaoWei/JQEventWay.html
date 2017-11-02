@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JQEventWay</title>
+<style>
+*{ padding: 0;margin: 0; }
+#div1{ width: 200px;height: 200px;background-color: orange;overflow: hidden;margin: 20px;position:relative;}
+#div2{ width: 100px;height: 100px;background-color: green; margin:30px;}
+</style>
+<script src="../JQuery/jquery-1.12.2.js"></script>
+<script>
+// window.onload=function(){
+// 	var oDiv2=document.getElementById("div2");
+// 	alert(oDiv2.offsetLeft);//绝对定位以父级为准，不绝对定位以屏幕为准
+// };
+$(function(){
+
+
+	// $("li").each(function(i,elem){
+	// 	$(elem).html(i);
+	// });
+	// alert($("li").size());
+
+	// $("#div2").offsetParent().css("background","blue");
+	// $("input").val(456);
+
+	// alert($("#div2").offset().left);
+	// 都是以屏幕为准
+
+	// alert($("#div2").position().left);
+	//将div2看成绝对定位，left值包含margin,物快到有定位父级距离-margin。
+
+	// $("#div1").one("click",function(ev){
+	// 	alert("123");//只执行事件一次
+		//clientX相对于可视区 pageX相当于文档
+		// ev.pageX
+		// ev.which 
+		//键盘键值 也可以记录鼠标键值 keyword
+		// ev.preventDefault(); //阻止默认事件
+		// ev.stopPropagation();//阻止冒泡
+		// return false; //即阻止默认事件，有阻止冒泡
+});
+</script>
+</head>
+<body>
+<ul>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+<input type="text" value="123">
+	<div id="div1">
+		<div id="div2"></div>
+	</div>
+	<span>span</span>
+</body>
+</html>

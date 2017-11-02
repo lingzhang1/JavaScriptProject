@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>choseTab</title>
+	<style>
+	.active{
+		background-color: orange;
+	}
+	div{
+		width: 200px;
+		height: 200px;
+		background-color: #ccc;
+		display: none;
+	}
+	</style>
+<script>
+window.onload=function(){
+	var getIpt=document.getElementsByTagName("input");
+	var getDiv=document.getElementsByTagName("div");
+	for (var i = 0; i < getIpt.length; i++) {
+		getIpt[i].index=i;
+		getIpt[i].onclick=function(){
+			for (var j = 0; j < getIpt.length; j++) {
+				getIpt[j].className="";
+				getDiv[j].style.display="none";
+			}
+			getDiv[this.index].style.display="block";
+			this.className="active";
+
+		};
+	}
+	console.log(i);//最终i等于4
+};
+</script>
+
+</head>
+<body>
+	<input type="button" value="1" class="active">
+	<input type="button" value="2">
+	<input type="button" value="3">
+	<div style="display: block;">111</div>
+	<div>222</div>
+	<div>333</div>
+</body>
+</html>

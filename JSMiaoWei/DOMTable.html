@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DOMTable</title>
+<script>
+window.onload=function(){
+var oTab=document.getElementById("tab1");
+var oTxt=document.getElementById("text1");
+var oBtn=document.getElementById("btn1");
+var oBtn2=document.getElementById("btn2");
+var oBtn3=document.getElementById("btn3");
+var iNowId=oTab.tBodies[0].rows.length+1;
+//保存当前行号
+var oldBgColor="";
+var arr=[];//定义数组用于排序
+var bAsc=true;//判断升序排列
+changeColor();//隔行变色
+
+//排序
+// 1.转成数组 
+oBtn3.onclick=function(){
+	for (var i = 0; i < oTab.tBodies[0].rows.length; i++) {
+	arr[i]=oTab.tBodies[0].rows[i];
+}
+//2.重新排序。
+arr.sort(
+	function(tr1,tr2){
+		if (bAsc){
+			return parseInt(tr1.cells[0].innerHTML)-parseInt(tr2.cells[0].innerHTML);
+		}else{
+			return parseInt(tr2.cells[0].innerHTML)-parseInt(tr1.cells[0].innerHTML); 
+		}
+});
+//3.重新插入
+for (var i = 0; i < arr.length; i++) {
+	oTab.tBodies[0].appendChild(arr[i]);
+}
+bAsc=!bAsc;//取反
+// if (bAsc) {
+// 	bAsc=false;
+// } else {
+// 	bAsc=true;
+// }//判断是升降序排列
+changeColor();
+};
+
+//搜索
+oBtn2.onclick=function(){
+	changeColor();//隔行变色
+for (var i = 0; i < oTab.tBodies[0].rows.length; i++) {
+	//解决大小写敏感问题
+	var sValueInTab=oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+	var sValueInTxt=oTxt.value.toLowerCase();
+	//多输入值搜索
+	var arr=sValueInTxt.split(" ");
+	// alert(arr.length);
+
+	//拆分输入字符串
+	var bFound=false;
+	// 保存search是否找到字符串
+	for (var j = 0; j < arr.length; j++) {
+		// alert(arr[j]);
+		if (sValueInTab.search(arr[j])!=-1) {
+			bFound=true;
+			break;
+		}
+	}
+	if (bFound) {
+		oTab.tBodies[0].rows[i].style.background="yellow";
+	}
+	
+}
+	oTxt.value="";//必须执行完时间才能清除
+
+};
+
+//增加删除一行
+oBtn.onclick=function(){
+	var oTr=document.createElement("tr");
+	var oTd=null;
+
+	oTd=document.createElement("td");
+	oTd.innerHTML=iNowId++;//行号自动增加
+	oTr.appendChild(oTd);
+	//第一格
+	oTd=document.createElement("td");
+	oTd.innerHTML=oTxt.value;
+	oTr.appendChild(oTd);
+	//第二格，内容为输入值
+	oTd=document.createElement("td");
+	oTd.innerHTML='<a href="#">删除<a/>';
+	oTr.appendChild(oTd);
+	//删除事件
+	oTd.getElementsByTagName("a")[0].onclick=function(){
+		oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+			changeColor();//隔行变色
+	};
+
+	oTab.tBodies[0].appendChild(oTr);
+	//将行添加到tbody
+
+	oTxt.value=""; //清空输入框
+
+	changeColor();//隔行变色
+};
+
+//隔行变色，鼠标移入高亮
+function changeColor(){
+	for (var i = 0; i < oTab.tBodies[0].rows.length; i++) {
+	oTab.tBodies[0].rows[i].style.background=i%2==0?"#ccc":"";
+	oTab.tBodies[0].rows[i].onmouseover=function(){
+		oldBgColor=this.style.background;
+		//保存移入之前的背景颜色
+		this.style.background="yellow";
+	};
+	oTab.tBodies[0].rows[i].onmouseout=function(){
+		this.style.background=oldBgColor;
+		//还原移入前的背景颜色
+	};
+}
+};
+};
+
+
+</script>
+</head>
+<body> 
+<input type="text" id="text1">
+<input type="button" id="btn1" value="添加">
+<input type="button" value="搜索" id="btn2">
+<input type="button" value="排序" id="btn3">
+<table border="1" width="400" id="tab1">
+	<thead>
+		<td>ID</td>
+		<td>姓名</td>
+		<td>操作</td>
+	</thead>
+	<tbody>
+		<tr>
+			<td>5</td>
+			<td>blue</td>
+			<td></td>
+		</tr>	
+		<tr>
+			<td>3</td>
+			<td>red</td>
+			<td></td>
+		</tr>	
+		<tr>
+			<td>1</td>
+			<td>orange</td>
+			<td></td>
+		</tr>	
+		<tr>
+			<td>2</td>
+			<td>yellow</td>
+			<td></td>
+		</tr>	
+		<tr>
+			<td>4</td>
+			<td>pink</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

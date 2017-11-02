@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JQEventDelegate</title>
+<script src="../JQuery/jquery-1.12.2.js"></script>
+<script>
+$(function(){
+	//给ul添加事件，通过冒泡添加到li身上
+	// $("ul").delegate("li","click",function(){
+	// 	this.style.background="red";
+	// 	$("ul").undelegate();//阻止事假委托
+	// })
+
+	// $("#div1").on("click",function(){
+	// 	alert(123);
+	// });
+	// $("#div1").trigger("click");
+	//打开页面就可以出发事件
+	//直接调用自定义事件
+	$("#div1").on("show",function(){
+		alert(123);
+	});
+	$("#div1").trigger("show");
+
+
+});
+</script>
+</head>
+<body>
+<div id="div1">divvvv</div>
+	<ul>
+		<li>1111</li>
+		<li>2222</li>
+		<li>3334</li>
+		<li>4443</li>
+		<li>5552</li>
+	</ul>
+</body>
+</html>

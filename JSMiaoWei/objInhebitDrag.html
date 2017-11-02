@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>objInhebitDrag</title>
+<style>
+#div1 {width:100px; height:100px; background:red; position:absolute;}
+#div2 {width:100px; height:100px; background:yellow; position:absolute;}
+</style>
+<script src="fnJS/ObjDrag.js"></script>
+<script src="fnJS/ObjLimitDrag.js"></script>
+<script>
+window.onload=function(){
+	new Drag("div1");
+	new LimitDrag("div2");
+};
+</script>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>	
+</body>
+</html>

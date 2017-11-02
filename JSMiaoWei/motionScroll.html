@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>motionScroll</title>
+	<style>
+	#div1{ width: 100px;height: 100px;position: absolute;right: 0px;background-color: orange; }
+	body{
+		width: 2000px;height: 2000px;
+	}
+	</style>
+	<script>
+	window.onscroll=function(){
+		var oDiv=document.getElementById("div1");
+		var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+		var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+		var iTarget=scrollTop+(document.documentElement.clientHeight-oDiv.offsetHeight)/2;
+
+		//若浏览器可视区为奇数，除二可能为小数，导致div在目标点跳跃  目标值不是整数
+
+		startMove(parseInt(iTarget));
+		// oDiv.style.left=scrollLeft+(document.documentElement.clientWidth-oDiv.offsetWidth)/2+"px";
+	};
+	var timer=null;
+	function startMove(iTarget){
+		var oDiv=document.getElementById("div1");
+		clearInterval(timer);
+		timer=setInterval(function(){
+			var iSpeed=(iTarget-oDiv.offsetTop)/8;
+			iSpeed=iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+			if (oDiv.offsetTop==iTarget) {
+				clearInterval(timer);
+			} else {
+				oDiv.style.top=oDiv.offsetTop+iSpeed+"px";
+			}
+			text1.value=oDiv.offsetTop+"目标点"+iTarget;//不用获取？？？
+		},30);
+	};
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+	<input type="text" id="text1">
+</body>
+</html>

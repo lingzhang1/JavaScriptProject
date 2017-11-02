@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cookie</title>
+	<script>
+		window.onload=function(){
+			var oDate=new Date();
+			oDate.setDate(oDate.getDate()+30);
+			// alert(oDate);
+			// alert(oDate.getFullYear()+"-"+(oDate.getMonth()+1)+"-"+oDate.getDate());
+			document.cookie="user=123;expires="+oDate;
+			document.cookie="color=red";
+			alert(document.cookie);
+		};
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

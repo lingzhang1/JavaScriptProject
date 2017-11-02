@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>regularExpression</title>
+<script>
+var str="12,34 45 -ddf e A dd he 89 ff76 9"
+// var re=new RegExp("a","i");
+// var re=/a/i;//简写形式
+//大小写敏感,加i忽略大小写
+// alert(re.test(str));
+
+var re=/\d/;
+alert(str.search(re));
+
+// var arr=[];
+// var tmp="";
+// for (var i = 0; i < str.length; i++) {
+// 	if (str.charAt(i)>="0"&&str.charAt(i)<="9") {
+// 		tmp+=str.charAt(i);
+// 	} 
+// 	else {
+// 		if(tmp){
+// 			arr.push(tmp);
+// 			tmp="";
+// 		}
+// 	}
+// }
+// if (tmp) {
+// 	arr.push(tmp);
+// 	tmp="";
+// }
+// alert(arr);
+
+//正则
+// var re=/\d+/g;
+// alert(str.match(re));
+</script>
+</head>
+<body>
+	
+</body>
+</html>

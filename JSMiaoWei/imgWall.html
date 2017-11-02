@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>imgWall</title>
+<style>
+*{ padding: 0;margin:0; }
+#ul1{width: 660px;position: relative;margin: 10px auto;}
+#ul1 li{width: 200px;height: 150px;float:left;list-style: none;margin: 10px; z-index: 1;}
+#ul1 .active{ border: 1px dashed #bbb; }
+</style>
+<script src="fnJS/startMove_Json.js"></script>
+<script>
+window.onload=function(){
+	//布局转换
+	var oUl=document.getElementById('ul1');
+	var aLi=oUl.getElementsByTagName('li');
+	var aPos=[];
+	var iMinZindex=2;
+	var oTxt=document.getElementById("text");
+	//获取所有li的top和left，并保存在数组aPos中
+	for (var i = 0; i < aLi.length; i++) {
+		aPos[i]={left:aLi[i].offsetLeft, top:aLi[i].offsetTop};
+		oTxt.innerHTML+=aLi[i].offsetLeft+" "+aLi[i].offsetTop+"   ";//打印宽高
+	}
+	//将所有li的设置成绝对定位
+	for (var i = 0; i < aLi.length; i++) {
+		aLi[i].style.left=aPos[i].left+"px";
+		aLi[i].style.top=aPos[i].top+"px";
+		aLi[i].style.position="absolute";
+		aLi[i].style.margin="";
+		//去掉margin值,因为offset中包含margin值
+	}
+	for (var i = 0; i < aLi.length; i++) {
+		aLi[i].index=i;
+		setDrag(aLi[i]);
+	}
+	//拖拽
+	function setDrag(obj){
+		obj.onmousedown=function(ev){
+			var oEvent=ev||event;
+			var disX=oEvent.clientX-obj.offsetLeft;
+			var disY=oEvent.clientY-obj.offsetTop;
+			clearInterval(obj.timer);
+			obj.style.zIndex=iMinZindex++;
+			document.onmousemove=function(ev){
+				var oEvent=ev||event;
+				obj.style.left=oEvent.clientX-disX+"px";
+				obj.style.top=oEvent.clientY-disY+"px";
+
+				for (var i = 0; i < aLi.length; i++) {
+					aLi[i].className="";
+					//先清空虚线
+				}
+				var oNear=findNearest(obj);
+				//选出碰撞且最近的li
+				if (oNear) {
+					oNear.className="active";
+				}
+				// if (obj==aLi[i]) continue;
+				//与自身碰撞跳过
+				// if (cdTest(obj,aLi[i])) {
+				// 	aLi[i].className="active";//碰撞产生虚线
+			};
+			document.onmouseup=function(){
+				document.onmousemove=null;
+				document.onmouseup=null;
+				var oNear=findNearest(obj);
+				if (oNear) {
+					//清空类
+					oNear.className="";
+					//保证运动图片在最上层
+					oNear.style.zIndex=iMinZindex++;
+					obj.style.zIndex=iMinZindex++;
+					//交换位置
+					startMove(oNear,aPos[obj.index]);
+					startMove(obj,aPos[oNear.index]);
+					//交换index值
+					var tmp=0;
+					tmp=obj.index;
+					obj.index=oNear.index;
+					oNear.index=tmp;
+				}
+				else{
+				//没有碰撞，回到拖拽原始位置
+					startMove(obj,aPos[obj.index]);
+				}
+			};
+			return false;
+		};
+	};
+	//碰撞检测
+	function cdTest(obj1,obj2){
+		var l1=obj1.offsetLeft;
+		var r1=obj1.offsetLeft+obj1.offsetWidth;
+		var t1=obj1.offsetTop;
+		var b1=obj1.offsetTop+obj1.offsetHeight;
+
+		var l2=obj2.offsetLeft;
+		var r2=obj2.offsetLeft+obj2.offsetWidth;
+		var t2=obj2.offsetTop;
+		var b2=obj2.offsetTop+obj2.offsetHeight;
+
+		if (r1<l2||l1>r2||t1>b2||b1<t2) {
+			return false;
+		}
+		else{
+			return true;
+		}
+	};
+	//计算两物块距离
+	function getDis(obj1,obj2){
+		var a=obj1.offsetLeft-obj2.offsetLeft;
+		var b=obj1.offsetTop-obj2.offsetTop;
+		return Math.sqrt(a*a+b*b);
+	};
+	//检测碰撞且最近的
+	function findNearest(obj){
+		var iMin=99999;
+		var iMinIndex=-1;
+		for (var i = 0; i < aLi.length; i++) {
+			//图片自身碰撞跳出此次循环
+			if (obj==aLi[i]) continue;
+			if (cdTest(obj,aLi[i])) {
+				var dis=getDis(obj,aLi[i]);
+				if (iMin>dis) {
+					iMin=dis;
+					//选出距离最近li
+					iMinIndex=i;
+				}
+			}
+		}
+		if (iMinIndex==-1) {
+			return null;//若没有碰撞
+		}
+		else{
+			return aLi[iMinIndex];//若碰撞，返回距离最近li
+		}
+	};
+};
+</script>
+</head>
+<body>
+<textarea name="" cols="50" rows="10" id="text"></textarea>
+<ul id="ul1">
+	<li><img src="../images/imgWall/1.jpg" alt=""></li>
+	<li><img src="../images/imgWall/2.jpg" alt=""></li>
+	<li><img src="../images/imgWall/3.jpg" alt=""></li>
+	<li><img src="../images/imgWall/4.jpg" alt=""></li>
+	<li><img src="../images/imgWall/5.jpg" alt=""></li>
+	<li><img src="../images/imgWall/1.jpg" alt=""></li>
+	<li><img src="../images/imgWall/2.jpg" alt=""></li>
+	<li><img src="../images/imgWall/3.jpg" alt=""></li>
+	<li><img src="../images/imgWall/4.jpg" alt=""></li>
+	<li><img src="../images/imgWall/5.jpg" alt=""></li>
+</ul>
+</body>
+</html>

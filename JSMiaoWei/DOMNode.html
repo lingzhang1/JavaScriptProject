@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOMNode</title>
+	<script>
+		window.onload=function(){
+			var oUl=document.getElementById("ul1");
+			// alert(oUl.childNodes.length);
+			// for (var i = 0; i < oUl.childNodes.length; i++) {
+			// 	if (oUl.childNodes[i].nodeType==1) {
+			// 		oUl.childNodes[i].style.backgroundColor="red";
+			// 	}	
+			// }
+			alert(oUl.children.length);
+		};
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li>111</li>
+		<li>222</li>
+		<li>333</li>
+		<li>444</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>thisDemo</title>
+	<script>
+	window.onload=function(){
+		var getInput=document.getElementsByTagName("input");
+		for (var i = 0; i<getInput.length; i++) 
+			{
+				getInput[i].onclick=function()
+				    {
+					alert(this.value);
+					};
+			}
+	};
+		
+		
+	</script>
+</head>
+<body>
+	<input type="button" value="妙味课堂">
+	<input type="button" value="妙味茶馆">
+	<input type="button" value="妙味视频">
+</body>
+</html>

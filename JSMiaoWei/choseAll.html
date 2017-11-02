@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>choseAll</title>
+	<script>
+		window.onload=function(){
+			var getBtn=document.getElementById("btn");
+			var getIpt=document.getElementsByTagName("input");
+			// getIpt[0].checked=true;
+			btn.onclick=function(){
+				// alert(getIpt.length);
+				var i=0;
+				for (var i = 0; i < getIpt.length; i++) {
+					getIpt[i].checked=true;
+				}
+			}
+		};
+	</script>
+</head>
+<body>
+	<p id="btn">全选</p>
+	<input type="checkbox" ><br>
+	<input type="checkbox"><br>
+	<input type="checkbox"><br>
+	<input type="checkbox"><br>
+	<input type="checkbox"><br>
+	<input type="checkbox"><br>
+	<input type="checkbox"><br>
+	<input type="checkbox"><br>
+</body>
+</html>

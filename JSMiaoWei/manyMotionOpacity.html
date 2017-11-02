@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>manyMotionOpacity</title>
+<style>
+div{
+	width: 100px;height: 100px;margin-top: 10px;opacity: 0.3;background-color: orange;
+}
+</style>
+<script>
+window.onload=function(){
+	var aDiv=document.getElementsByTagName("div");
+
+	for (var i = 0; i < aDiv.length; i++) {
+		// aDiv[i].timer=null;
+		// aDiv[i].opacity=30;
+		//自定义物体opacity属性
+		//自定义物体timer属性
+		aDiv[i].onmouseover=function(){
+			startMove(this,"opacity",100);
+		};
+		aDiv[i].onmouseout=function(){
+			startMove(this,"opacity",30); //必须是整数值
+		};
+	}
+};
+	function startMove(obj,attr,iTarget)
+	{
+		clearInterval(obj.timer);
+		obj.timer=setInterval(function(){
+			var iCur=0;
+			if (attr=="opacity") {
+				iCur=parseInt(parseFloat(getComputedStyle(obj,false)[attr])*100);
+				//乘以100将小数换成十位数
+				// alert(iCur);
+				// alert(0.07*100); 
+			//结果7.000001避免使用小数
+			//使用parseInt，去掉小数部分。
+			} 
+			else {
+			iCur=parseInt(getComputedStyle(obj,false)[attr]);
+			}
+			// alert(iCur);
+			//替换offsetWidth
+			var iSpeed=(iTarget-iCur)/8;
+			iSpeed=iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+			if (iCur==iTarget) {
+				clearInterval(obj.timer);
+			} 
+			else 
+			{
+				if (attr=="opacity") {
+				obj.style.opacity=(iCur+iSpeed)/100;
+				} 
+				else {
+				obj.style[attr]=iCur+iSpeed+"px";
+				//不可以用style.attr形式
+				}
+			}
+		},30);
+	};
+	// function startMove(obj,iTarget){
+	// 	clearInterval(obj.timer);
+	// 	obj.timer=setInterval(function(){
+	// 		var iSpeed=(iTarget-obj.opacity)/8;
+	// 		iSpeed=iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);//必须大于1
+	// 		if (obj.opacity==iTarget) {
+	// 			clearInterval(obj.timer);
+	// 		} 
+	// 		else {
+	// 			obj.opacity+=iSpeed;
+	// 			obj.style.opacity=obj.opacity/100;
+	// 		}
+	// 	},30);
+	// };
+</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

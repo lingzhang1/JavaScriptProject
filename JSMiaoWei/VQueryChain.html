@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VQueryChain</title>
+<style>
+div{ background-color:orange; width: 100px;height: 100px;margin-left: 10px;}
+</style>
+<script src="VQuery.js"></script>
+<!-- <script src="../JQuery/jquery-1.12.2.js"></script> -->
+<script> 
+$(function(){
+	// $("div").css("width","200px");
+	// $("div").css({width:"200px",height:"300px"}).css("background","yellow");
+
+	// $("input").hover(function(){
+	// 	$("div").css({width:"200px",height:"300px",background:"yellow"});
+	// },function(){
+	// 	$("div").css({width:"100px",height:"200px",background:"orange"});
+	// }).toggle(function(){
+	// 	$("div").css("display","none");
+	// },function(){
+	// 	$("div").css("display","block");
+	// });
+
+	function show(str){
+		alert(str);
+		return show;
+	};
+	show("abc")("234");
+	a('234');
+});
+</script>
+</head>
+<body>
+<input type="button" value="aaa">
+	<div></div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VQueryBubble</title>
+<style>
+div{ background-color:orange; width: 200px;height: 200px; opacity: 0.3; filter:alpha(opacity:30);}
+</style>
+<script src="VQuery.js"></script>
+<!-- <script src="../JQuery/jquery-1.12.2.js"></script> -->
+<script> 
+$(function(){
+	$('input').toggle(function(){
+		$('div').animate({width:100,height:100,opacity:100},function(){
+			alert("over");
+		});
+	},function(){
+		$('div').animate({width:200,height:200,opacity:30},function(){
+			alert("over");
+		});
+	});
+});
+</script>
+</head>
+<body>
+	<input type="button" value="运动">
+	<div></div>
+</body>
+</html>

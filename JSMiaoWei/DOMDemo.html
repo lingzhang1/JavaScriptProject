@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOMDemo</title>
+	<script>
+		window.onload=function(){
+			var oBtn=document.getElementById("btn1");
+			var oUl=document.getElementById("ul1");
+			var oFrag=document.createDocumentFragment();
+			oBtn.onclick=function(){
+				var iStart=new Date().getTime();
+				for (var i = 0; i < 100000; i++) {
+					
+					var oLi=document.createElement("li");
+					// oFrag.appendChild(oLi);
+						oUl.appendChild(oLi);
+				}
+				var iEnd=new Date().getTime();
+				alert(iEnd-iStart);
+			};
+
+			// var oTxt=document.getElementById("text1");
+			// oBtn.onclick=function(){
+			// 	var oLi=document.createElement("li");
+			// 	var aLi=document.getElementsByTagName("li");
+				// oLi.innerHTML=oTxt.value;
+			// 	if (aLi.length==0) {
+			// 		oUl.appendChild(oLi);
+			// 	} 
+			// 	else {
+			// 		oUl.insertBefore(oLi,aLi[0]);
+			// 	}
+				
+			// };
+			// var aA=document.getElementsByTagName("a");
+			var oUl=document.getElementById("ul1");
+			for (var i = 0; i < aA.length; i++) {
+				aA[i].onclick=function(){
+					oUl.removeChild(this.parentNode);
+				};
+			}
+		};
+	</script>
+</head>
+<body>
+	<!-- <input type="text" id="text1">; -->
+	<input type="button" value="创建" id="btn1">
+	<ul id="ul1">
+		<!-- <li>aaa <a href="#">删除</a>	</li>
+		<li>bbb <a href="#">删除</a>	</li>
+		<li>ccc <a href="#">删除</a>	</li> -->
+	</ul>
+</body>
+</html>

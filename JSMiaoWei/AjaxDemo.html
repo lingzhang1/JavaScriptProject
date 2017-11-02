@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AjaxDemo</title>
+	<script src="ajax.js"></script>
+	<script>
+		window.onload=function(){
+			var oBtn=document.getElementById("btn1");
+			oBtn.onclick=function(){
+				ajax("abc.txt?t="+new Date().getTime(),function(str){alert(str);
+				});
+				alert("abc.txt?t="+new Date().getTime());
+				//每次点击都改变一次缓存路径
+			};
+		};
+		// function ajax();
+	</script>
+</head>
+<body>
+	<input type="button" value="读取" id="btn1">
+</body>
+</html>

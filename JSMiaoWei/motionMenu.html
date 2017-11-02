@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>motionMenu</title>
+<style>
+* {margin:0; padding:0;}
+#ul1 li {width:100px; height:20px; line-height:20px; text-align:center; position:relative; float:left; list-style:none; background:#9F3; border:1px solid #660;}
+#ul1 li div {background:#CCC; overflow:hidden; position:absolute; top:20px; width:100%; height:0;opacity:0;}
+</style>
+<script src="fnJS/startMove_Json.js"></script>
+<script>
+	window.onload=function(){
+		var oUl=document.getElementById("ul1");
+		var oLi=oUl.getElementsByTagName("li");
+		for (var i = 0; i < oLi.length; i++)
+		{
+		 	oLi[i].onmouseover=function(){
+		 		var oDiv=this.getElementsByTagName("div")[0];
+		 		oDiv.style.height="auto";
+		 		var iHeight=oDiv.offsetHeight;
+		 		//获取自适应高低度
+		 		oDiv.style.height=0;
+		 		// alert(oDiv.offsetHeight);
+		 		startMove(oDiv,{height:iHeight,opacity:100});
+		 	};
+		 	oLi[i].onmouseout=function(){
+		 		var oDiv=this.getElementsByTagName("div")[0];
+		 		startMove(oDiv,{height:0,opacity:0});
+		 	};
+		}
+	};
+</script>
+</head>
+<body>
+	<ul id="ul1">
+	<li>
+    	首页
+    	<div>
+        	dfasdf<br />
+			fwert
+            vsfd<br />
+			sadfsd
+        </div>
+    </li>
+	<li>
+    	产品
+    	<div>
+        	dfasdf<br />
+			fw<br />
+			dfasdf<br />
+			dsfasdf<br />
+			dasfasdf<br />
+			ert
+            vsfd<br />
+			sadfsd
+        </div>
+    </li>
+	<li>
+    	关于
+    	<div>
+        	dfafdasdf<br />
+			sdf<br />
+			fwert
+            vsfd<br />
+			sadfsd
+        </div>
+    </li>
+</ul>
+</body>
+</html>

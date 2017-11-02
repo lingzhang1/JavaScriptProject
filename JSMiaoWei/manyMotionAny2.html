@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>manyMotionAny2</title>
+<style>
+	div{
+		width: 100px;height: 100px;background-color: orange;
+		margin-top: 10px;
+		/*border: 2px solid #000;*/
+	}
+</style>
+<script>
+	function startMove(obj,attr,iTarget){
+		clearInterval(obj.timer);
+		obj.timer=setInterval(function(){
+			var iCur=parseInt(getComputedStyle(obj,false)[attr]);
+			//替换offsetWidth
+			var iSpeed=(iTarget-iCur)/8;
+			iSpeed=iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+			if (iCur==iTarget) {
+				clearInterval(obj.timer);
+				iCur=iTarget+"px";
+			} 
+			else 
+			{
+				obj.style.attr=iCur+iSpeed+"px";
+			}
+		},30);
+	};
+	window.onload=function(){
+		var aDiv=document.getElementsByTagName("div");
+		for (var i = 0; i < aDiv.length; i++) {
+		// aDiv[i].timer=null;
+		//每个div加自定义属性timer
+		aDiv[i].onmouseover=function(){
+			startMove(this,"width",500);
+		};
+		aDiv[i].onmouseout=function(){
+			startMove(this,"width",100);
+		};
+		}
+	};
+</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

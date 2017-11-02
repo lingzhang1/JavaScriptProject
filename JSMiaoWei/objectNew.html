@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>objectNew</title>
+<script>
+	function CreatPerson(name,sex){
+		//系统默认创建 var this=new Object();
+		this.name=name;
+		this.sex=sex;
+
+		
+		//系统默认返回this
+	};
+	CreatPerson.prototype.showName=function(){
+			alert(this.name);
+		};
+	CreatPerson.prototype.showSex=function(){
+			alert(this.sex);
+		};
+
+	var p1=new CreatPerson("hehe","nan");
+	var p2=new CreatPerson("heihei","nv");
+	p1.showSex();
+	p1.showName();
+	p2.showSex();
+	p2.showName();
+
+	// function show(){
+	// 	alert(this);
+	// };
+	// show();//window
+	// new show();//Object
+</script>
+</head>
+<body>
+	
+</body>
+</html>

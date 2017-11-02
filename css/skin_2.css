@@ -1,0 +1,64 @@
+body{
+	background: url(../images/bg.gif) repeat center top;
+	
+}
+.messageBox{
+	width: 648px;
+	height: 382px;
+	background-color: rgba(255, 255, 255, 0.6);
+	margin:40px 0 0 461px;
+	border: 2px solid #CFD4DB;
+	box-sizing: border-box;
+}
+.changeSkin{
+	height: 55px;
+	width: 400px;
+	border-bottom: 1px solid #D4D8DB;
+	margin:0 auto;
+	line-height: 55px;
+	padding-left: 11px;
+	padding-bottom: 11px;
+	color:#999999;
+	font-weight: bold;
+	box-sizing: border-box;
+
+}
+.changeSkin input{
+	color:#43484D;
+	border: 1px solid #D4D8DB;
+	font-weight: normal;
+	font-size: 14px;
+	width: 50px;
+	height: 20px;
+}
+.message{
+	margin-top: 20px;
+	padding-left: 22px;
+	color: #4A4B4D;
+	box-sizing: border-box;
+
+}
+.message .textRect{
+	margin-top: 10px;
+	width: 304px;
+	height: 36px;
+	border: 1px solid #BFC0C3;
+	box-sizing: border-box;
+
+}
+.message .textRect_a{
+	width: 304px;
+	height: 126px;
+	margin-top: 10px;
+	border: 1px solid #BFC0C3;
+
+}
+.message .sub{
+	width: 120px;
+	height: 40px;
+	margin-top: 13px;
+	margin-left: 166px;
+	border: 1px solid #BFC0C3;
+	color:#44482F;
+
+}

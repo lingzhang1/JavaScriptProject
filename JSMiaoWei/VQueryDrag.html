@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VQueryRotateImg</title>
+<style>
+	#div1{ background-color: red;width: 100px;height: 100px;position:absolute; }	
+	#div2{ background-color: yellow;width: 100px;height: 100px;position:absolute; }	
+	#div3{ background-color: blue;width: 100px;height: 100px;position:absolute; }
+</style>
+<script src="VQuery.js"></script>
+<script src="fnJS/startMove_Json.js"></script>
+<!-- <script src="../JQuery/jquery-1.12.2.js"></script> -->
+<script> 
+$(function(){
+	$('#div1').drag();
+	$('#div2').drag();
+	$('#div3').drag();
+});
+</script>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<div id="div3"></div>
+</body>
+</html>

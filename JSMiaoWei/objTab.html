@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>objTab</title>
+<style>
+#div1 input {background:#CCC;}
+#div1 .active {background:yellow;}
+#div1 div {width:200px; height:200px; background:#CCC; display:none;}
+</style>
+<script>
+window.onload=function ()
+{
+	var oTab=new TabSwitch();
+};
+function TabSwitch(){
+	this.oDiv=document.getElementById('div1');
+	this.aBtn=this.oDiv.getElementsByTagName('input');
+	this.aDiv=this.oDiv.getElementsByTagName('div');
+	var i=0;
+	var _this=this;
+	
+	for(i=0;i<this.aBtn.length;i++)
+	{
+		this.aBtn[i].index=i;
+		this.aBtn[i].onclick=function ()
+		{
+			_this.Tab(this);
+		};
+	}
+};
+TabSwitch.prototype.Tab=function(oBtn){
+	for(i=0;i<this.aBtn.length;i++)
+	{
+		this.aBtn[i].className='';
+		this.aDiv[i].style.display='none';
+	}
+	oBtn.className='active';
+	this.aDiv[oBtn.index].style.display='block';
+};
+</script>
+</head>
+<body>
+	<div id="div1">
+	<input class="active" type="button" value="教育" />
+	<input type="button" value="财经" />
+	<input type="button" value="aaa" />
+	<div style="display:block;">1asdfasdfds</div>
+	<div>2xzcvxzcv</div>
+	<div>5332342345</div>
+</div>
+</body>
+</html>

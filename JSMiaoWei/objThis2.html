@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>objThis2</title>
+<script>
+	window.onload=function(){
+		var obj=new Bbb();
+	};
+	function Bbb(){
+		this.oBtn=document.getElementById("btn");
+		this.a=15;
+		_this=this;
+		this.oBtn.onclick=function(){
+			_this.show();
+		};
+	};
+	Bbb.prototype.show=function(){
+		alert(this.a);
+	};
+</script>
+</head>
+<body>
+	<input type="button" value="点击" id="btn">
+</body>
+</html>

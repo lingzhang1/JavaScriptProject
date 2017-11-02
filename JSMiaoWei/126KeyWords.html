@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>126KeyWoeds</title>
+	<style>
+		#words{
+			width: 100px;
+			height: 100px;
+			background-color: orange;
+			display: none;	
+		}
+	</style>
+	<script>
+		function appear(){
+		document.getElementById("words").style.display="block";
+	};
+		function gone(){
+		document.getElementById("words").style.display="none";
+	};
+	</script>
+</head>
+<body>
+	<div onmouseover="appear()" onmouseout="gone()">
+		<input type="checkbox"> 自动登录
+	</div>
+	
+	<div id="words">
+		不要在网吧勾选！
+	</div>
+</body>
+</html>

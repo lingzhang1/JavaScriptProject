@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>rectScroll</title>
+	<style>
+		#div1{
+			width: 100px;
+			height: 100px;
+			background-color: #ccc;
+			position: absolute;
+			left: 0px;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var timer=null;
+			var getDiv=document.getElementById("div1");
+			var getBtn1=document.getElementById("btn1");
+			var getBtn2=document.getElementById("btn2");
+			getBtn1.onclick=function(){
+				// alert(getDiv.offsetLeft);
+				timer=setInterval(function(){getDiv.style.left=getDiv.offsetLeft+5+"px";},30);
+			};
+			getBtn2.onclick=function(){
+				clearInterval(timer);
+			};
+		};
+	</script>
+</head>
+<body>
+	<input type="button" value="向右移动" id="btn1">	
+	<input type="button" value="停止移动" id="btn2">
+	<div id="div1"></div>
+</body>
+</html>

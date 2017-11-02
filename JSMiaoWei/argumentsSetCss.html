@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>argumentsSetCss</title>
+	<style>
+	#div1{
+		
+	}
+	</style>
+	<script>
+		function css(obj,attr,value){
+			if (arguments.length==2) {
+				// return arguments[0].style[arguments[1]];
+				return obj.style[attr];
+			} //获取
+			else if(arguments.length==3){
+				// arguments[0].style[arguments[1]]=arguments[2];
+				return obj.style[attr]=value;
+			} //设置
+		};
+		window.onload=function(){
+			var oBtn=document.getElementById("btn");
+			var oDiv=document.getElementById("div1");
+			oBtn.onclick=function(){
+				css(oDiv,"background-color", "green");
+				// alert(css(oDiv,"width"));
+			};
+		};
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="样式">
+	<div id="div1" style="width: 100px;
+		height: 100px;
+		background-color: orange;"></div>
+</body>
+</html>

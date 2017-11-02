@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AjaxJson</title>
+	<script>
+		window.onload=function(){
+			var oBtn=document.getElementById("btn1");
+			oBtn.onclick=function(){
+				ajax("data.json",function(str){
+					var arr=eval(str);
+					alert(arr[0].b);
+				});
+			};
+		};
+	</script>
+</head>
+<body>
+	<input type="button" id="btn1">
+</body>
+</html>

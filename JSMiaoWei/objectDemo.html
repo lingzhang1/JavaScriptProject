@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>objectDemo</title>
+<script>
+//工厂方式构造对象
+//构造函数
+function creatPerson(name,sex){
+	//原料
+	var obj=new Object();
+	//加工
+	obj.name=name;
+	obj.sex=sex;
+	obj.showName=function(){
+		alert(this.name);
+	};
+	obj.showSex=function(){
+		alert(this.sex);
+	};
+	//出厂
+	return obj;//必须要将obj返回
+};
+
+var p1=creatPerson("hehe","nan");
+var p2=creatPerson("heihei","nv");
+p1.showName();
+p1.showSex();
+p2.showName();
+p2.showSex();
+
+</script>
+</head>
+<body>
+	
+</body>
+</html>

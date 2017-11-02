@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>whilepractice</title>
+	<script>
+		//计算1到100的和，并去掉个位是九的数字。
+		var a=0;
+		var sum=0;
+		while(a<=100)
+		{
+			a++;
+			var b=(a-9)%10
+			if (b!=0) 
+			{
+				sum+=a;	
+			}
+			else
+			{
+				continue;
+			}
+
+		}
+		alert("1-100的和是："+sum);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

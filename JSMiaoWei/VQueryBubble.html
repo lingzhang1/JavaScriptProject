@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VQueryBubble</title>
+<style>
+div{ background-color:orange; width: 200px;height: 200px;}
+.two{ background-color: red; width:100px;height: 100px; margin:0 auto;}
+.three{ background-color: green; width:50px;height: 50px; margin:0 auto;}
+</style>
+<script src="VQuery.js"></script>
+<!-- <script src="../JQuery/jquery-1.12.2.js"></script> -->
+<script> 
+$(function(){
+	$("div").click(function(){
+		alert($(this).css("backgroundColor"));
+		return false;
+	});
+});
+</script>
+</head>
+<body>
+<div>
+	<div class="two">
+		<div class="three"></div>
+	</div>
+</div>
+</body>
+</html>

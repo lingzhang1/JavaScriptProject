@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>onmousemove</title>
+	<style>
+	#div1{
+		width: 100px;
+		height: 100px;
+		background-color: orange;
+		position: absolute;
+		left: 0px;
+		top:0px;
+	}
+	</style>
+	<script>
+		document.onmousemove=function(ev){
+			var oDiv=document.getElementById("div1");
+			var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+			var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+			oDiv.style.left=ev.clientX+scrollLeft+"px";
+			oDiv.style.top=ev.clientY+scrollTop+"px";
+		};
+	</script>
+</head>
+<body style="height: 2000px;">
+	<div id="div1"></div>
+</body>
+</html>

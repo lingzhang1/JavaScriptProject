@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>regExpTest</title>
+<script>
+window.onload=function(){
+	//邮箱校验
+//字母、数字、下划线(长度不限)  @  一串英文或数字 . 一串英文(长度2-4位)
+var oTxt=document.getElementById("text");
+var oBtn=document.getElementById("btn");
+
+	oBtn.onclick=function(){
+		var re=/^\w+@[a-z0-9]\.[a-z]{2,4}$/;
+		if (re.test(oTxt.value)) {
+
+			alert("通过");
+		}
+		else{
+			alert("错误");
+		}
+	};
+
+	//校验中文
+	var str="wfslafojf;d 好"
+	var re=/[\u4e00-\u9fa5]/;//包含全部中文字
+	alert(re.test(str));
+};
+
+
+
+</script>
+</head>
+<body>
+	<input type="text" id="text">
+	<input type="button" id="btn" value="校验">
+</body>
+</html>

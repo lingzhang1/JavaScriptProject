@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>seamlessScroll</title>
+	<link rel="stylesheet" href="../css/seamlessScroll.css">
+	<script>
+
+		window.onload=function(){
+			var getRoll=document.getElementById('roll') ;
+			var getLi=document.getElementsByTagName('li');
+			var getUl=document.getElementsByTagName("ul")[0];
+			var getA=document.getElementById("roll").getElementsByTagName("a");
+			getUl.innerHTML+=getUl.innerHTML; //复制li
+			getUl.style.width=getLi[0].offsetWidth*getLi.length+"px"; //增大UL宽度
+			var isSpeed=2;
+			var timer=null;
+			function move(){
+				getUl.style.left=getUl.offsetLeft-isSpeed+"px";
+				if (getUl.offsetLeft<-getUl.offsetWidth/2) {
+					getUl.style.left="0px";
+				}
+				else if (getUl.offsetLeft>=0) {
+					getUl.style.left=-getUl.offsetWidth/2+"px";
+				}
+			};
+			timer=setInterval(move,30);
+			
+			getA[0].onclick=function(){
+				isSpeed=2;
+			};
+			getA[1].onclick=function(){
+				isSpeed=-2;
+			};
+			getUl.onmouseover=function(){
+				clearInterval(timer);
+			};
+			getUl.onmouseout=function(){
+				timer=setInterval(move,30);
+			};
+		};
+	</script>
+</head>
+<body>
+	<div class="control">
+	<label id="chk_pause"><input type="checkbox" checked="checked">间隔停顿</label>
+	<select id="pause_time">
+		<option value="100">短</option>
+		<option value="1000" selected="selected">中</option>
+		<option value="3000">长</option>
+	</select>
+	滚动速度：
+	<select id="sel_speed">
+		<option value="2">慢</option>
+		<option value="5">中</option>
+		<option value="10">快</option>
+	</select>
+</div>
+
+<div class="roll" id="roll">
+    <a href="javascript:void(0);" class="btn_left"></a>
+    <a href="javascript:void(0);" class="btn_right"></a>
+    <div class="wrap">
+        <ul>
+            <li><a href="http://www.miaov.com/"><img src="../images/seamlessScroll/1.jpg" /></a></li>
+            <li><a href="http://www.miaov.com/"><img src="../images/seamlessScroll/2.jpg" /></a></li>
+            <li><a href="http://www.miaov.com/"><img src="../images/seamlessScroll/3.jpg" /></a></li>
+            <li><a href="http://www.miaov.com/"><img src="../images/seamlessScroll/4.jpg" /></a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

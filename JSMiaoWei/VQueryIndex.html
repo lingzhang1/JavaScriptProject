@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VQueryFind</title>
+<style>
+div{ background-color:orange; width: 100px;height: 100px;margin-left: 10px;float:left; }
+</style>
+<script src="VQuery.js"></script>
+<!-- <script src="../JQuery/jquery-1.12.2.js"></script> -->
+<script> 
+// function getIndex(obj){
+// 	//获取所有兄弟节点
+// 	var aBrother=obj.parentNode.children;
+// 	//遍历所有兄弟节点
+// 	for (var i = 0; i < aBrother.length; i++) {
+// 		//与obj相同便返回
+// 		if (aBrother[i]==obj) {
+// 			return i;
+// 		}
+// 	}
+// };
+// window.onload=function(){
+// 	var aBtn=document.getElementsByTagName('input');
+// 	for (var i = 0; i < aBtn.length; i++) {
+// 		aBtn[i].onclick=function(){
+// 			alert(getIndex(this));
+// 		};
+// 	}
+// };	
+$(function(){
+	$("input").click(function(){
+		alert($(this).index());
+	});
+});
+</script>
+</head>
+<body>
+<span></span>
+<input type="button" value="aaa">
+<input type="button" value="ccc">
+<input type="button" value="ddd">
+<input type="button" value="eee">
+</body>
+</html>

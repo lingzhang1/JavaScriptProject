@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>navigationApple</title>
+<style>
+	#div1{
+		width: 100%;position:absolute;text-align: center;bottom: 0;
+	}
+</style>
+<script>
+window.onload=function(){
+document.onmousemove=function(ev){
+	var oEvent=event||ev;
+	var aImg=document.getElementsByTagName("img");
+	var oDiv=document.getElementById("div1");
+	var aTxt=document.getElementsByTagName("input");
+	for (var i = 0; i < aImg.length; i++) {
+		var x=aImg[i].offsetLeft+aImg[i].offsetWidth/2;
+		var y=aImg[i].offsetTop+oDiv.offsetTop+aImg[i].offsetHeight/2;
+		var a=x-oEvent.clientX;
+		var b=y-oEvent.clientY;
+		var dis=Math.sqrt(Math.pow(a,2)+Math.pow(b,2));
+		//求得鼠标位置距图像中心距离
+		var scale=1-dis/300;
+		//距离与图形比例
+		if (scale<0.5) {
+			scale=0.5;
+		}
+		aImg[i].style.width=scale*128+"px";
+		aTxt[i].value=scale.toFixed(2);
+	}
+};
+};
+</script>
+</head>
+<body>
+<input type="text">
+<input type="text">
+<input type="text">
+<input type="text">
+<input type="text">
+<div id="div1">
+	<img src="../images/navigationApple/1.png" alt="" width="64">
+	<img src="../images/navigationApple/2.png" alt="" width="64">
+	<img src="../images/navigationApple/3.png" alt="" width="64">
+	<img src="../images/navigationApple/4.png" alt="" width="64">
+	<img src="../images/navigationApple/5.png" alt="" width="64">
+</div>
+</body>
+</html>

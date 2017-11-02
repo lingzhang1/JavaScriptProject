@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JQPlug</title>
+<style>
+	#div1{ width: 100px;height: 100px;background-color: orange; position:absolute;}
+</style>
+<script src="../JQuery/jquery-1.12.2.js"></script>
+<script>
+
+$.extend({
+	leftTrim:function(str){
+		return str.replace(/^\s+/,"");
+	},
+	rightTrim:function(str){
+		return str.replace(/\s+$/,"");
+	},
+	aaa:function(){},
+	bbb:function(){}
+});
+$.fn.extend({
+	drag:function(){
+		//this  $("#div")
+		$(this).mousedown(function(ev){
+			var disX=ev.pageX-$(this).offset().left;
+			var disY=ev.pageY-$(this).offset().top;
+			var This=$(this);
+			$(document).mousemove(function(ev){
+				This.css({left:ev.pageX-disX,top:ev.pageY-disY});
+			});
+			$(document).mouseup(function(){
+				$(this).off();
+			});
+			return false;
+		});
+	}
+});
+</script>
+<script>
+	// var str="   hello   ";
+	// alert("("+$.leftTrim(str)+")");
+	// alert("("+$.rightTrim(str)+")");
+	$(function(){
+		$("#div1").drag();
+	});
+</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

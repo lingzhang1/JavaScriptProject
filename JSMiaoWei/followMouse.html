@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>followMouse</title>
+	<style>
+		div{
+			width: 10px;
+			height: 10px;
+			background-color: orange;
+			position: absolute;
+
+		}
+		body{ height: 2000px; width: 200px; }
+	</style>
+	<script>
+		window.onload=function(ev){
+			var timer=null;
+			timer=setInterval(fnStartMove,100);
+			document.onmousemove=fnStartMove;
+		};
+		function fnStartMove(ev){
+				var aDiv=document.getElementsByTagName("div");
+				for (var i = aDiv.length-1; i > 0; i--) {
+					aDiv[i].style.left=aDiv[i-1].style.left;
+					aDiv[i].style.top=aDiv[i-1].style.top;
+					}
+				var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;	
+				var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+				aDiv[0].style.top=ev.clientY+scrollTop+"px";
+				aDiv[0].style.left=ev.clientX+scrollLeft+"px";
+			};
+	</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

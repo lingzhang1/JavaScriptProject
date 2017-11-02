@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JQMotion</title>
+<style>
+#div1,#div2,#div3{ width: 100px;height: 100px;background-color: orange; margin-top: 10px;}
+</style>
+<script src="../JQuery/jquery-1.12.2.js"></script>
+<script>
+$(function(){
+	//animate()
+	//第一参数：{} 运动值和属性
+	//第二参数：时间  默认400ms 
+	//第三个参数：运动形式 只有两种-默认swing 满快慢、 linear 匀速
+	//第四个参数：回调函数
+	// $("#div1").click(function(){
+	// 	$(this).animate({width:300,height:300},4000,function(){
+	// 		alert(123);
+	// 	});
+	// });
+	// //链式运动1_利用灰调函数
+	// $("#div2").click(function(){
+	// 	$(this).animate({width:300},2000,function(){
+	// 		$(this).animate({height:400},2000,function(){
+	// 			alert("完成");
+	// 		});
+	// 	});
+	// });
+	// //链式运动2
+	$("#div3").click(function(){
+		$(this).animate({width:300},2000,function(){
+		// alert("宽完成");
+	}).delay(1000).animate({height:300},2000,function(){
+		// alert("高完成");
+	});});
+
+	//停止运动
+	// $("#div3").click(function(){
+		// $("#div2").stop(false,false);
+		//第一个参数：true阻止后续运动 false不阻止后续运动，前提是不适用回调函数的后续运动
+		//第二个参数：true 停止以后会将当前运动立刻到目标点。false停止以后当前运动不会立刻达到目标点。
+		// $("#div2").finish();//立刻停止到所有指定目标点
+	// });
+
+});
+</script>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+</body>
+</html>

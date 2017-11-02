@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JQWays2</title>
+<style>
+	#div1{width: 100px;height: 100px;background-color: orange;border: 10px solid #000;padding: 10px; margin:10px;}
+</style>
+<script src="../JQuery/jquery-1.12.2.js"></script>
+<script>
+	// $("div".addClass("box2 box3"))
+	// $("div".removeClass("box2 box3"))
+	$(function(){
+		alert($("#div1").width());
+		// alert($("#div1").height());
+		alert($("#div1").innerWidth());
+		alert($("#div1").outerWidth());
+		alert($("#div1").outerWidth(true));
+	});
+</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

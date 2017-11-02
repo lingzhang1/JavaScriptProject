@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>choiceTab</title>
+	<style>
+	body,div,li,a,ul{
+		padding: 0; margin: 0;
+		list-style: none;
+		border:0 none;
+	}
+	#boxbig{
+		width: 306px;
+		height: 800px;
+		border-top: solid blue 3px;
+
+		margin: 0 auto;
+	}
+	#header_left,#header_center,#header_right{
+		width: 100px;
+		height: 30px;
+		/*background: none;
+		border:0 none;*/
+		background: silver;
+		border:1px solid grey;
+		text-align: center;
+		line-height: 30px;
+		float: left;
+	}
+	#header_left{
+		border-bottom: none;
+		background: white;
+
+	}
+
+	#body{
+		clear:both;
+		width: 306px;
+		height: 770px;
+		/*background-color: red;*/
+		/*text-align: left;*/
+	}
+	#chart1,#chart2,#chart3{
+		width: 306px;
+		height: 700px;
+		text-align: center;
+		/*text-indent: 0;*/
+		/*background-color: yellow;*/
+	}
+	#chart2,#chart3{
+		display: none;
+		
+	}
+	a{
+		text-decoration: none;
+		font:16px "仿宋";
+		color:black;
+		/*text-align: center;*/
+		/*background-color: yellow;*/
+
+	}
+	
+	</style>
+	<script>
+		function tochart1(){
+			document.getElementById("chart1").style.display="block";
+			document.getElementById("header_left").style.borderBottom="none";
+			document.getElementById("header_left").style.backgroundColor="white"
+			document.getElementById("chart2").style.display="none";
+			document.getElementById("header_center").style.borderBottom="1px solid grey";
+			document.getElementById("header_center").style.backgroundColor="silver"
+			document.getElementById("chart3").style.display="none";
+			document.getElementById("header_right").style.borderBottom="1px solid grey";
+			document.getElementById("header_right").style.backgroundColor="silver"
+		}
+		function tochart2(){
+			document.getElementById("chart2").style.display="block";
+			document.getElementById("header_center").style.borderBottom="none";
+			document.getElementById("header_center").style.backgroundColor="white";
+			document.getElementById("chart1").style.display="none";
+			document.getElementById("header_left").style.borderBottom="1px solid grey";
+			document.getElementById("header_left").style.backgroundColor="silver"
+			document.getElementById("chart3").style.display="none";
+			document.getElementById("header_right").style.borderBottom="1px solid grey";
+			document.getElementById("header_right").style.backgroundColor="silver"
+		}
+		function tochart3(){
+			document.getElementById("chart3").style.display="block";
+			document.getElementById("header_right").style.borderBottom="none";
+			document.getElementById("header_right").style.backgroundColor="white";
+			document.getElementById("chart1").style.display="none";
+			document.getElementById("header_left").style.borderBottom="1px solid grey";
+			document.getElementById("header_left").style.backgroundColor="silver";
+			document.getElementById("chart2").style.display="none";
+			document.getElementById("header_center").style.borderBottom="1px solid grey";
+			document.getElementById("header_center").style.backgroundColor="silver";
+		}
+	</script>
+</head>
+<body>
+	<div id="boxbig">
+		<div id="header_left" onmouseover="tochart1()">新闻</div>
+		<div id="header_center" onmouseover="tochart2()">图片</div>
+		<div id="header_right" onmouseover="tochart3()">军事</div>
+		<div id="body">
+			<ul id="chart1">
+				<li><a href="#">新闻新闻新闻新闻新闻新闻新闻新闻</a></li>
+				<li><a href="#">新闻新闻新闻新闻新闻新闻新闻新闻</a></li>
+				<li><a href="#">新闻新闻新闻新闻新闻新闻新闻新闻</a></li>
+				<li><a href="#">新闻新闻新闻新闻新闻新闻新闻新闻</a></li>
+				<li><a href="#">新闻新闻新闻新闻新闻新闻新闻新闻</a></li>
+				<li><a href="#">新闻新闻新闻新闻新闻新闻新闻新闻</a></li>
+				<li><a href="#">新闻新闻新闻新闻新闻新闻新闻新闻</a></li>
+				<li><a href="#">新闻新闻新闻新闻新闻新闻新闻新闻</a></li>
+				<li><a href="#">新闻新闻新闻新闻新闻新闻新闻新闻</a></li>
+				<li><a href="#">新闻新闻新闻新闻新闻新闻新闻新闻</a></li>
+				<li><a href="#">新闻新闻新闻新闻新闻新闻新闻新闻</a></li>
+				<li><a href="#">新闻新闻新闻新闻新闻新闻新闻新闻</a></li>
+				<li><a href="#">新闻新闻新闻新闻新闻新闻新闻新闻</a></li>
+			</ul>
+			<ul id="chart2">
+				<li><a href="">图片图片图片图片图片图片图片图片</a></li>
+				<li><a href="">图片图片图片图片图片图片图片图片</a></li>
+				<li><a href="">图片图片图片图片图片图片图片图片</a></li>
+				<li><a href="">图片图片图片图片图片图片图片图片</a></li>
+				<li><a href="">图片图片图片图片图片图片图片图片</a></li>
+				<li><a href="">图片图片图片图片图片图片图片图片</a></li>
+				<li><a href="">图片图片图片图片图片图片图片图片</a></li>
+				<li><a href="">图片图片图片图片图片图片图片图片</a></li>
+				<li><a href="">图片图片图片图片图片图片图片图片</a></li>
+				<li><a href="">图片图片图片图片图片图片图片图片</a></li>
+				<li><a href="">图片图片图片图片图片图片图片图片</a></li>
+				<li><a href="">图片图片图片图片图片图片图片图片</a></li>
+				<li><a href="">图片图片图片图片图片图片图片图片</a></li>
+				<li><a href="">图片图片图片图片图片图片图片图片</a></li>
+			</ul>
+			<ul id="chart3">
+				<li><a href="#">军事军事军事军事军事军事军事军事</a></li>
+				<li><a href="#">军事军事军事军事军事军事军事军事</a></li>
+				<li><a href="#">军事军事军事军事军事军事军事军事</a></li>
+				<li><a href="#">军事军事军事军事军事军事军事军事</a></li>
+				<li><a href="#">军事军事军事军事军事军事军事军事</a></li>
+				<li><a href="#">军事军事军事军事军事军事军事军事</a></li>
+				<li><a href="#">军事军事军事军事军事军事军事军事</a></li>
+				<li><a href="#">军事军事军事军事军事军事军事军事</a></li>
+				<li><a href="#">军事军事军事军事军事军事军事军事</a></li>
+				<li><a href="#">军事军事军事军事军事军事军事军事</a></li>
+				<li><a href="#">军事军事军事军事军事军事军事军事</a></li>
+				<li><a href="#">军事军事军事军事军事军事军事军事</a></li>
+				<li><a href="#">军事军事军事军事军事军事军事军事</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

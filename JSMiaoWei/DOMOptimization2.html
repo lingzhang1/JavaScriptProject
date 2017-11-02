@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<script>
+window.onload=function(){
+	var oUl=document.getElementsByTagName("ul")[0];
+	//直接创建节点
+	console.time("hello");
+	for (var i = 0; i < 5000; i++) {
+		var oLi=document.createElement("li");//70.99s
+		oLi.innerHTML='li';
+		oUl.appendChild(oLi);
+	}
+	console.timeEnd("hello");
+
+	//克隆DOM节点
+	console.time("hello");
+	var oLi=document.createElement('li');
+	oLi.innerHTML="li";
+	for(var i=0;i<5000;i++){
+		var newLi=oLi.cloneNode(true);//20.88s
+		oUl.appendChild(newLi);
+	}
+	console.timeEnd("hello");
+};
+</script>
+</head>
+<body>
+	<ul></ul>
+</body>
+</html>

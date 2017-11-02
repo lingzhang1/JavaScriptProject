@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+*{ margin:0;padding: 0; }
+#div1{
+	width: 5px;height: 5px;position: absolute;background-color: #ccc;left: 95px;top:95px;z-index: 2;
+}
+#div2{
+	width: 100px;height: 100px;position: absolute;background-color: orange;z-index: 1;
+}
+.dragBox{
+	position: absolute;border: 1px dashed #000;box-sizing: border-box;
+	
+}
+</style>
+<script>
+window.onload=function(){
+	Drag("div1","div2");
+};
+//改变大小拖拽 obj：要拖拽的方框  obj2：要改变大小的方框
+function Drag(obj,obj2){
+	var oDiv=document.getElementById(obj);
+	var oDiv2=document.getElementById(obj2);
+	oDiv.onmousedown=function(ev){
+		var oEvent=ev||event;
+		var disX=oEvent.clientX-oDiv.offsetLeft;
+		var disY=oEvent.clientY-oDiv.offsetTop;
+		//解决IE兼容问题
+	if (oDiv.setCapture) {
+		oDiv.onmousemove=fnMove;
+		oDiv.onmouseup=fnUp;
+		oDiv.setCapture();//解除捕获
+		}
+	else{//火狐和谷歌
+		document.onmousemove=fnMove;
+		document.onmouseup=fnUp;
+		return false;
+		}	
+	function fnMove(ev){
+			oEvent=ev||event;
+			var l=oEvent.clientX-disX;
+			var t=oEvent.clientY-disY;
+			//磁性吸附加限制范围
+			if (l<50) {
+				l=0;
+			}
+			else if (l>document.documentElement.clientWidth-oDiv.offsetWidth-50) {
+				l=document.documentElement.clientWidth-oDiv.offsetWidth;
+			}
+			if (t<50) {
+				t=0;
+			}
+			else if (t>document.documentElement.clientHeight-oDiv.offsetHeight-50) {
+				t=document.documentElement.clientHeight-oDiv.offsetHeight;
+			}
+			
+			//拖动小方块移动
+			oDiv.style.left=l-oDiv.offsetWidth+"px";
+			oDiv.style.top=t-oDiv.offsetHeight+"px";
+			//拖动大方块改变长度和宽度
+			oDiv2.style.width=l+"px";
+			oDiv2.style.height=t+"px";
+		};
+	function fnUp(){
+		this.onmousemove=null;
+		this.onmouseup=null;
+		if (this.releaseCapture) {
+			this.releaseCapture();
+			//事件捕获
+		}
+		};	
+	};
+};
+</script>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>motionSideBar</title>
+<style>
+#div1{
+	width: 100px;height: 200px;background-color: orange;position: absolute;left: -100px;
+}
+span{
+	width: 20px;height: 60px;position: absolute;background-color: yellow;left: 100px;top:70px;text-align: center;border: 1px solid #ccc;
+}
+</style>
+
+<script>
+window.onload=function(){
+	var aSpan=document.getElementsByTagName("span")[0];
+	var oDiv=document.getElementById("div1");
+	aSpan.onclick=function(){
+	if (oDiv.offsetLeft==-100) {
+		
+		startMove(0);
+	}
+	else if (oDiv.offsetLeft==0) {
+		startMove(-100);
+	}
+	}
+};
+var timer=null;
+function startMove(iTarget)
+{
+	var oDiv=document.getElementById("div1");
+	clearInterval(timer);
+	timer=setInterval(function()
+	{
+		if (oDiv.offsetLeft<iTarget) {
+			iSpeed=7;
+		}
+		else{
+			iSpeed=-7;
+		}
+		if (Math.abs(oDiv.offsetLeft-iTarget)<7 )
+		{
+			clearInterval(timer);
+			oDiv.style.left=iTarget+"px";
+		}
+		else
+		{
+			oDiv.style.left=oDiv.offsetLeft+iSpeed+"px";
+		}
+	},30);
+};
+</script>
+</head>
+<body>
+	<div id="div1">
+		<span>分享到</span>
+	</div>
+</body>
+</html>

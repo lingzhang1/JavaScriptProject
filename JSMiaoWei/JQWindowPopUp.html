@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JQWindowPopUp</title>
+<style>
+*{margin: 0;padding: 0;}
+#login{ width: 300px;height: 300px; border: 1px solid #000; position: absolute; }
+#close{ position:absolute; right:0; top: 0; }
+</style>
+<script src="../JQuery/jquery-1.12.2.js"></script>
+<script>
+$(function(){
+	$("#input1").click(function(){
+		//创建弹窗布局标签
+		var oLogin=$('<div id="login"><p>用户名：<input type="text"></p><p>密码：<input type="password"></p><div id="close">X</div></div>');
+		//将弹窗布局添加到window
+		$("body").append(oLogin);
+		//设置弹窗居中
+		oLogin.css({left:($(window).width()-oLogin.outerWidth())/2,top:($(window).height()-oLogin.outerHeight())/2});
+		//点击关闭关闭弹窗
+		$("#close").click(function(){
+			oLogin.remove();//移出弹窗
+		});
+		//滚动屏幕弹窗居中
+		$(window).on("resize scroll",function(){ //修改css合写形式
+			oLogin.css({left:($(window).width()-oLogin.outerWidth())/2,top:($(window).height()-oLogin.outerHeight())/2+$(window).scrollTop()});//居中且滚动居中
+		});
+	});
+
+});
+</script>
+</head>
+<body style="height: 2000px;">
+<input type="button" value="弹窗" id="input1">
+<!-- <div id="login">
+	<p>用户名：<input type="text"></p>
+	<p>密码：<input type="password"></p>
+	<div id="close"> X</div>
+	
+</div> -->
+</body>
+</html>

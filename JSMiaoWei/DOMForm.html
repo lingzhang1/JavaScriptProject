@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DOMForm</title>
+<script>
+window.onload=function(){
+	var oForm=document.getElementById("form1");
+	var oUser=document.getElementsByName("user")[0];
+	var oPass=document.getElementsByName("pass")[0];
+
+	oForm.onsubmit=function(){
+		if (oUser.value==""||oPass.value=="") {
+			alert("输入错误");
+			return false;//阻止默认提交行为
+		}
+	};
+	
+	oForm.onreset=function(){
+		// if (confirm("是否要清空？")) {
+		// 	return true;
+		// }
+		// else{
+		// 	return false;
+		// }
+		return confirm("是否要清空");
+	};//情况校验
+};
+</script>
+</head>
+<body>
+<form id="form1" action="http://www.baidu.com" method="get" target="_blank">
+	用户名：<input type="text" name="user">
+	密码：<input type="password" name="pass">
+	<input type="submit" value="提交">
+	<input type="reset" value="重置">
+</form>
+</body>
+</html>

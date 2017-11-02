@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JQWaysDOM</title>
+<script src="../JQuery/jquery-1.12.2.js"></script>
+<script>
+$(function(){
+	// $("span").insertBefore("div").css("background","red");
+	//将span添加到div之前
+	// $("span").before($("div")).css("background","red");
+	//span之前必须是div
+	// $("div").before($("span"));
+	//div之前必须是span
+	// $("span").insertAfter("div");
+	// $("span").appendTo("div");
+	// $("span").prependTo("div");
+	// $("div").remove();
+	// $("div").click(function(){
+	// 	alert("123");
+	// });
+	// $("div").on({"click":function(){
+	// 	alert("abc");
+	// },
+	// "mouseover":function(){
+	// 	alert(123);
+	// }});
+	// $("div").on("mouseover click",function(){
+	// 	alert("abc");
+	// 	$("div").off("mouseover");
+	// 	//只移除mouseover
+	// });
+	$(document).click(function(){
+		alert($(window).scrollTop());
+	});
+
+});
+	
+</script>
+</head>
+<body style="height: 2000px;">
+<div>div</div>	
+<span>span</span>
+</body>
+</html>

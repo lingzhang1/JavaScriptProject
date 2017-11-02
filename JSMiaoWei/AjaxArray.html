@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AjaxDemo</title>
+	<script>
+		window.onload=function(){
+			var oBtn=document.getElementById("btn1");
+			// var str="[1,2,3]";
+			// var arr=eval(str);//计算字符串的值
+			// alert(arr[0]);
+
+			// var str="alert("abc");";
+			// eval(str);
+
+			// var str="function show(){alert('abc');}";
+			// eval(str);
+			// show();
+
+			oBtn.onclick=function(){
+				ajax("data.txt",function(str){
+					var arr=eval(str);
+					alert(arr[0]);
+				});
+			};
+		};
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>delayAlert</title>
+	<style>
+	#div1{
+		width: 200px;
+		height: 30px;
+		background-color: orange;
+	}
+	#div2{
+		width: 100px;
+		height: 20px;
+		background-color: yellow;
+		margin-top: 5px;
+		display: none;
+	}
+	</style>
+	<script>
+		window.onload=function(){
+			var timer=null;
+			var getD1=document.getElementById("div1");
+			var getD2=document.getElementById("div2");
+			function hide(){
+				timer=setInterval(function(){
+					getD2.style.display="none";
+				},300);
+			};
+			function show(){
+				clearInterval(timer);
+				getD2.style.display="block";
+			};
+			getD1.onmouseover=show;
+			getD2.onmouseover=show;
+			getD1.onmouseout=hide;
+			getD2.onmouseout=hide;
+		};
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+</body>
+</html>

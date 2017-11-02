@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>motionImage</title>
+	<style>
+	#img1{
+		/*filter: alpha(opacity:30);/*所有浏览器都不兼容*/
+		opacity: 0.3;  /*所有浏览器都兼容*/
+	}
+	</style>
+<script>
+var timer=null;
+var alpha=30;
+	function startMove(iTarget){
+		var oImg=document.getElementById("img1");
+		clearInterval(timer);
+		timer=setInterval(function(){
+			var iSpeed=0;
+			if (alpha<iTarget) {
+				iSpeed=1;
+			} else {
+				iSpeed=-1;
+			}
+			if (alpha==iTarget) {
+				clearInterval(timer);
+			} 
+			else {
+				alpha=alpha+iSpeed;
+				// oImg.style.filter="alpha(opacity:"+alpha+")";
+				oImg.style.opacity=alpha/100;
+			}
+		},30);	
+	};
+	window.onload=function(){
+		var oImg=document.getElementById("img1");
+		oImg.onmouseover=function(){
+			startMove(100);
+		};
+		oImg.onmouseout=function(){
+			startMove(30);
+		};
+	};
+</script>
+</head>
+<body>
+	<img src="../images/downUpSlide/1.jpg" alt="" id="img1">
+</body>
+</html>

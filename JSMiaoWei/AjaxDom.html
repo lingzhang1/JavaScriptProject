@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AjaxDom</title>
+	<script src="ajax.js"></script>
+	<script>
+		window.onload=function(){
+			var oUl=document.getElementById("ul1");
+			var aA=document.getElementsByTagName("a");
+			for (var i = 0; i < aA.length; i++) {
+				aA[i].index=i;
+				aA[i].onclick=function(){
+					oUl.innerHTML="";//清除上次页面内容
+					ajax((this.index+1)+".json",function(str){
+						var aDate=eval(str);
+						for (var i = 0; i < aDate.length; i++) {
+							var oLi=document.createElement("li");
+							oLi.innerHTML=
+							aDate[i].user+":"+aDate[i].pass;
+							oUl.appendChild(oLi);
+						}
+					});
+				};
+			}
+		};
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<a href="#">1</a>
+		<a href="#">2</a>
+		<a href="#">3</a>
+	</ul>
+</body>
+</html>

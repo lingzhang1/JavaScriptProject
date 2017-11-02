@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{
+		width: 100px;height: 100px;background-color: orange;
+		opacity: 0.3;
+	}
+	</style>
+	<script>
+	window.onload=function(){
+		var oDiv=document.getElementById("div1");
+		startMove(oDiv,{width:102,height:300,opacity:100});
+	};
+		//完美运动框架
+function startMove(obj,json,fn)
+	{
+	clearInterval(obj.timer);
+	obj.timer=setInterval(function(){
+		// var attr="";
+		var bStop=true;
+		//检测json中所有制都到达目标点
+		for(attr in json){
+			var iCur=0;
+			if (attr=="opacity") 
+			{
+				iCur=parseInt(parseFloat(getComputedStyle(obj,false)[attr])*100);
+			} 
+			else 
+			{
+			iCur=parseInt(getComputedStyle(obj,false)[attr]);
+			}
+			var iSpeed=(json[attr]-iCur)/8;
+			iSpeed=iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+			if (iCur!=json[attr]) {
+				bStop=false;
+				//判断所有变量都已经达到目标点。如果没达到则返回false。
+			}
+			
+			if (attr=="opacity") 
+			{
+			obj.style.opacity=(iCur+iSpeed)/100;
+			} 
+			else 
+			{
+			obj.style[attr]=iCur+iSpeed+"px";
+			//不可以用style.attr形式
+			}
+			
+		}
+		if (bStop) 
+		{ 
+			clearInterval(obj.timer);
+			if (fn) 
+			{
+				fn();
+			} 
+		} //一次json内容执行完以后判断是否要关闭定时器
+	},30);
+}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VQueryRotateImg</title>
+<link rel="stylesheet" href="../css/motionRotateImg2.css">
+<script src="VQuery.js"></script>
+<script src="fnJS/startMove_Json.js"></script>
+<!-- <script src="../JQuery/jquery-1.12.2.js"></script> -->
+<script> 
+$(function(){
+	var aUl=$(".imgWrap").find("ul");
+	var aLi=aUl.find('li');
+	var aDiv=$(".imgWrap").find(".num").find('div');
+	var timer=null;
+	var index=0;
+	//点击播放
+	aDiv.click(function(){
+		clearInterval(timer);
+		index=$(this).index();
+		move();
+	});
+	//移入暂停，移出播放
+	aLi.hover(function(){
+		clearInterval(timer);
+	},function(){
+		timer=setInterval(function(){
+			timerInner();
+		},1000);
+	});
+	//自动播放
+	timer=setInterval(function(){
+		timerInner();
+	},1000);
+	//定时器内容
+	function timerInner(){
+		index++;
+		if (index>=aDiv.size()) {
+			index=0;
+		}
+		move();
+	};
+	function move(){
+		aDiv.attr("className","");
+		aDiv.eq(index).attr('className','active');
+		var imgHeight=parseInt(aLi.css("height"));
+		aUl.animate({"top":-(imgHeight*index)});
+	};
+});
+</script>
+</head>
+<body>
+	<div class="imgWrap">
+		<ul>
+			<li><a href="#"><img src="../images/VQueryRotateImg/1.jpg"></a></li>
+			<li><a href="#"><img src="../images/VQueryRotateImg/2.jpg"></a></li>
+			<li><a href="#"><img src="../images/VQueryRotateImg/3.jpg"></a></li>
+			<li><a href="#"><img src="../images/VQueryRotateImg/4.jpg"></a></li>
+			<li><a href="#"><img src="../images/VQueryRotateImg/5.jpg"></a></li>
+		</ul>	
+		<div class="num">
+			<div class="active">1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+		</div>
+	</div>
+</body>
+</html>

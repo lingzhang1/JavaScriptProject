@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<script>
+window.onload=function(){
+	var aA=document.getElementsByTagName('a');
+	var oUl=document.getElementsByTagName('ul')[0];
+	var aLi=document.getElementsByTagName('li');
+	for (var i = 0; i < aA.length; i++) {
+		aA[i].onclick=function(){
+			if (mj1(this.innerHTML)) {
+				var oLi=document.createElement('li');
+				oLi.innerHTML=this.innerHTML;
+				if (!aLi[0]) {
+					oUl.appendChild(oLi);
+				}
+				else{
+					oUl.insertBefore(oLi,aLi[0]);
+				}
+			}
+			else{
+				mj2(this.innerHTML);
+			}
+		};
+	}
+
+	function mj1(text){
+		var aLi=document.getElementsByTagName('li');
+		for (var i = 0; i < aLi.length; i++) {
+			if (aLi[i].innerHTML==text) {
+				return false;
+			}
+		}
+		return true;
+	};
+	function mj2(text){
+		var aLi=document.getElementsByTagName('li');
+		for (var i = 0; i < aLi.length; i++) {
+			if (aLi[i].innerHTML==text) {
+				oUl.insertBefore(aLi[i],aLi[0]);
+			}
+		}
+	};
+};
+</script>
+</head>
+<body>
+<a href="#">北京</a>	
+<a href="#">上海</a>	
+<a href="#">广州</a>	
+<a href="#">天津</a>	
+<a href="#">重庆</a>	
+<a href="#">济南</a>	
+<a href="#">青岛</a>	
+<ul></ul>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VQueryToggle2</title>
+<style>
+#div1{ background-color:orange; width: 100px;height: 100px; }
+</style>
+<script src="VQuery.js"></script>
+<script>
+$(function(){
+	$("#btn1").click(function(){
+		alert($("#text").attr("value"));
+	});	
+	$("#btn2").click(function(){
+		$("#text").attr("value",$("#text2").attr("value"));
+	});
+});	
+</script>
+</head>
+<body>
+<input type="text" id="text"><br>	
+<input type="text" id="text2"><br>	
+<input type="button" id="btn1" value="读取文字">	
+<input type="button" id="btn2" value="设置文字">	
+<!-- <div id="div1"></div> -->
+</body>
+</html>

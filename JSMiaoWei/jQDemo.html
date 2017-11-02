@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JQDemo</title>
+<script src="../JQuery/jquery-1.12.2.js"></script>
+<script>
+$(function(){
+	// $("#div1").css("backgroundColor","red");
+	// $(".box");
+	// #("div");
+	// $("li:first").css("backgroundColor","red");
+	// $("li:eq(2)").css("backgroundColor","green");
+	//隔行换色
+	$("li:even").css("backgroundColor","green");
+	$("li:odd").css("backgroundColor","red");
+
+});
+	
+</script>
+</head>
+<body>
+<ul>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+<div id="div1" class="box" style="width: 100px;height: 100px;"></div>	
+</body>
+</html>

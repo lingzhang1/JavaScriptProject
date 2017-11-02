@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>motionPerfect</title>
+<style>
+#div1{
+	width: 100px;height: 100px;background-color: orange;
+}
+</style>
+<script>
+	// var obj={a:15,b:4,c:8};
+	// var arr=[15,4,8];
+	// // alert(obj["a"]);
+	// // alert(arr[0]);
+	// var i=0;
+	// // for(i in arr){
+	// // 	alert(i+"="+arr[i]);
+	// // }  // for....in 循环，遍历数组	
+	// for(i in obj){
+	// 	alert(i+"="+obj[i]);
+	// }  //遍历Jaon
+
+
+	// function setStyle(obj,attr,value){
+	// 	if (arguments.length==2) {
+	// 		return getComputedStyle(obj,false)[attr];
+	// 	}
+	// 	else if(arguments.length==3) 
+	// 	{
+	// 		obj.style[attr]=value;
+	// 	}
+	// };
+  
+  	function setStyle(obj,json){
+  		var attr="";
+  		for(attr in json)
+  		{
+  			obj.style[attr]=json[attr];
+  		}
+  	};
+	window.onload=function(){
+		var oDiv=document.getElementById("div1");
+		setStyle(oDiv,{width:"200px",height:"200px",backgroundColor:"green"});
+	};
+</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

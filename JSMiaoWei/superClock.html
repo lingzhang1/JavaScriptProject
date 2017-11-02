@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>superClock</title>
+	<script>
+		window.onload=function(){
+		
+			setInterval(updateTime,1000);
+			updateTime();
+		};
+		function toDouble(num){
+			if (num<10) {
+				return "0"+num;
+			} 
+			else {
+				return ""+num;
+			}
+		};	
+		function updateTime(){
+				// alert(time.charAt(4));
+			var getBtn=document.getElementById("btn");
+			var getImg=document.getElementsByTagName("img");
+			var getDate=new Date();
+			var time=toDouble(getDate.getHours())+toDouble(getDate.getMinutes())+toDouble(getDate.getSeconds());
+			for (var i = 0; i < getImg.length; i++) {
+					getImg[i].src="../images/"+time.charAt(i)+".png";
+				}
+			};
+	</script>
+</head>
+<body style="font-size: 30px; color: yellow; background-color: purple;" >
+	<img src="../images/superClock/0.png">
+	<img src="../images/superClock/0.png" >
+	点
+	<img src="../images/superClock/0.png">
+	<img src="../images/superClock/0.png" >
+	分
+	<img src="../images/superClock/0.png">
+	<img src="../images/superClock/0.png" >
+	秒
+</body>
+</html>

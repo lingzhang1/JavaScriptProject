@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>menueChange</title>
+	<style>
+		#method{
+			border: 1px solid #ccc;
+			width: 50px;
+			height: 60px;
+			display: none;
+		}
+		#method dd{
+			margin-left: 5px;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var getCon=document.getElementById("control");
+			var getMet=document.getElementById("method");
+			getCon.onclick=function(){
+				if (getMet.style.display=="block") {
+					getMet.style.display="none";
+				}
+				else{
+					getMet.style.display="block";
+				}
+			}
+
+		}
+	</script>
+
+
+</head>
+<body>
+	<dl>
+		<dt id="control"><a href="#">输入法</a></dt>
+		<div id="method">
+			<dd>手写</dd>
+			<dd>拼音</dd>
+			<dd>关闭</dd>
+		</div>
+	
+	</dl>
+</body>
+</html>

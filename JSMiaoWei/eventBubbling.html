@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>eventBubbling</title>
+	<style>
+	#div1{
+		width: 100px;
+		height: 150px;
+		background-color: orange;
+		display: none;
+	}
+	</style>
+	<script>
+		window.onload=function(){
+			var oBtn=document.getElementById("btn1");
+			var oDiv=document.getElementById("div1");
+			oBtn.onclick=function(ev){
+				oDiv.style.display="block";
+				ev.cancelBubble=true;
+				//组织冒泡
+			};
+			document.onclick=function(){
+				oDiv.style.display="none";
+			}; //冒泡
+		};
+	</script>
+</head>
+<body>
+	<input type="button" id="btn1" value="显示">
+	<div id="div1">
+		
+	</div>
+</body>
+</html>

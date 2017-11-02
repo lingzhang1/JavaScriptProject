@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VQuery</title>
+<style>
+#div1{ background-color:orange; width: 100px;height: 100px; }
+</style>
+<script src="VQuery.js"></script>
+<script>
+// function show(a,b){
+// 	alert(this);
+// };
+// show(12,5);
+// show.call("abc",12,5);
+// //第一个参数是this，后面是函数参数
+// show.apply("abc",[12,5]);
+// //apply与call作用相同，参数以数组形式传入
+
+$(function(){
+	// $("#btn").click(function(){
+	// 	$("#div1").show();
+	// });	
+	// $("#btn1").click(function(){
+	// 	$("#div1").hide();
+	// });
+	$("#div1").hover(function(){
+		$(this).css("background","red");
+		//事件绑定中attach中，this指的是window。addEventListener指的是事件对象
+	},function(){
+		$(this).css("background","green");
+	});
+	// $("#btn").toggle(function(){
+	// 	$("#div1").show();
+	// },function(){
+	// 	$("#div1").hide();
+	// });
+});	
+</script>
+</head>
+<body>
+	<input type="button" id="btn" value="显示">	
+	<input type="button" id="btn1" value="隐藏">
+	<div id="div1"></div>
+</body>
+</html>

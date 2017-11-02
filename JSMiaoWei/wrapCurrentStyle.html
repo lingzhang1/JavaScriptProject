@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>wrapCurrentStyle</title>
+	<style>
+	#div1{
+		width: 100px;
+		height: 100px;
+		background-color: orange;
+	}
+	</style>
+	<script>
+		function getStyle(obj,attr){
+			if (obj.currentStyle) {
+				return obj.currentStyle[attr];
+			} 
+			else {
+				return getComputedStyle(obj,false)[attr];
+			}
+		};
+		window.onload=function(){
+			var oDiv=document.getElementById("div1");
+			alert(getStyle(oDiv,"backgroundColor"));
+		};
+		// fontSize 若没设置，则取得默认值
+			//复合样式无法获取，如backgroundColor
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>
